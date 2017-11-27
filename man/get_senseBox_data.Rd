@@ -9,7 +9,7 @@ get_senseBox_data(senseBoxId, sensorId = rep("all", times =
   CSV = FALSE, POSIXct = TRUE)
 }
 \arguments{
-\item{senseBoxId}{\link{character}or \link{vector} of \link{character} (\strong{required}): senseBoxId or a \link{vector} or \link{list} of senseBoxIds}
+\item{senseBoxId}{\link{character}or \link{vector} of \link{character} (\strong{required}): senseBoxId or a \link{vector} of \link{character} of senseBoxIds}
 
 \item{sensorId}{\link{character} or \link{list} of \link{character} (\strong{required}): sensorId or a \link{list} of senseBoxIds}
 

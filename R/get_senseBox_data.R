@@ -96,8 +96,16 @@ get_senseBox_data <- function(
       }
     }
 
+    if(parallel::detectCores() <= 2){
+      warning("[get_senseBox_data()] For the multicore auto mode at least 4 cores are needed. Use 1 core to calculate results.", call. = FALSE)
+      cores <- 1
+    }else{
+      cores <- parallel::detectCores() - 2
+    }
 
-    parsed <- parallel::mclapply(1:length(sensorId_new), function(y){
+    cl <- parallel::makeCluster(cores)
+
+    parsed <- parallel::parLapply(cl, 1:length(sensorId_new), function(y){
 
       ## check arguments `fromDate`, `toDate`
 
@@ -140,7 +148,9 @@ get_senseBox_data <- function(
 
       } ## end else
 
-    }) ## end parsed <- parallel::mclapply ...
+    }) ## end parsed <- parallel::parLapply ...
+
+    parallel::stopCluster(cl)
 
 
     names(parsed) <- paste0(sensor_info$title[sensor_index], " [",sensor_info$unit[sensor_index], "]")

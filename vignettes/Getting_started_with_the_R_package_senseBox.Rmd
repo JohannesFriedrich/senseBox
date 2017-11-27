@@ -98,7 +98,7 @@ Use the argument `fromDate` and `toDate` to specify the desired time frame.
 
 ```{r eval = FALSE}
 data_timeframe <- get_senseBox_data(senseBoxId, 
-                                    sensorIds, 
+                                    sensor_ids, 
                                     fromDate = "2017-11-11 11:11:11", 
                                     toDate = "2017-11-14 11:11:11")
 ```

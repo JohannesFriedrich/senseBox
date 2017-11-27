@@ -29,7 +29,16 @@ get_senseBox_sensor_info <- function(
   if(class(unlist(senseBoxId)) != "character")
     stop("[get_senseBox_sensor_info()] Argument 'senseBoxId' has to be a character", call. = FALSE)
 
-  parsed <- parallel::mclapply(1:length(senseBoxId), function(x){
+  if(parallel::detectCores() <= 2){
+    warning("[get_senseBox_data()] For the multicore auto mode at least 4 cores are needed. Use 1 core to calculate results.", call. = FALSE)
+    cores <- 1
+  }else{
+    cores <- parallel::detectCores() - 2
+  }
+
+  cl <- parallel::makeCluster(cores)
+
+  parsed <- parallel::parLapply(cl, 1:length(senseBoxId), function(x){
 
     url <- paste0("https://api.opensensemap.org/boxes/", senseBoxId[x])
 
@@ -44,6 +53,8 @@ get_senseBox_sensor_info <- function(
     return(parsed_single$sensors)
 
     })
+
+  parallel::stopCluster(cl)
 
   names(parsed) <- senseBoxId
 
