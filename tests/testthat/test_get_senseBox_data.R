@@ -1,6 +1,7 @@
 context("Test get_senseBox_data()")
 
 test_that("Check output length and class", {
+  testthat::skip_on_cran()
 
   temp <-  get_senseBox_data(
     senseBoxId = "5957b67494f0520011304cc1",
