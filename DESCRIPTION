@@ -1,0 +1,30 @@
+Package: senseBox
+Type: Package
+Title: senseBox API
+Version: 0.0.1
+Date: 2017-XX-XX
+Authors@R: person("Johannes", "Friedrich", role = c("aut", "cre"), email = "Johannes.Friedrich@posteo.de")
+Maintainer: Johannes Friedrich <Johannes.Friedrich@posteo.de>
+Description: An R API for the senseBox project. Download and analyse environmental data provided by https://sensebox.de/en/.
+URL: https://github.com/JohannesFriedrich/senseBox
+BugReports: https://github.com/JohannesFriedrich/senseBox/issues
+License: GPL-3
+Depends: 
+  R (>= 3.0.0),
+  httr
+Imports:
+  jsonlite,
+  parallel
+Suggests:
+  ggplot2,
+  reshape2,
+  htmltools,
+  leaflet,
+  knitr,
+  rmarkdown,
+  testthat,
+  scales
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr

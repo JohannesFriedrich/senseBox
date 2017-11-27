@@ -1,0 +1,6 @@
+urls:
+  reference: https://github.com/JohannesFriedrich/senseBox/reference
+  article: https://github.com/JohannesFriedrich/senseBox/articles
+articles:
+  Getting_started_with_the_R_package_senseBox: Getting_started_with_the_R_package_senseBox.html
+
