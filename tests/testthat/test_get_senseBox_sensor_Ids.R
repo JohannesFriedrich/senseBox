@@ -1,8 +1,8 @@
 context("Test get_senseBox_sensor_Ids()")
 
 test_that("Check output length and class", {
-  # testthat::skip_on_cran()
-  # testthat::skip_on_travis()
+  testthat::skip_on_cran()
+  testthat::skip_on_travis()
 
   Id <- "593acaa66ccf3b00116deb0f"
 
@@ -19,16 +19,16 @@ test_that("Check output length and class", {
 })
 
 test_that("Check error handling", {
-  # testthat::skip_on_cran()
-  # testthat::skip_on_travis()
+  testthat::skip_on_cran()
+  testthat::skip_on_travis()
 
   expect_error(get_senseBox_sensor_Ids("fail"), NULL)
 
 })
 
 test_that("Check multple input Ids", {
-  # testthat::skip_on_cran()
-  # testthat::skip_on_travis()
+  testthat::skip_on_cran()
+  testthat::skip_on_travis()
 
   ## check parallel = TRUE (default) option with multiple Ids
   Id <- "593acaa66ccf3b00116deb0f"
