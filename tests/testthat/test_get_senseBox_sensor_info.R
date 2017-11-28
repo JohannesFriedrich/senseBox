@@ -22,8 +22,8 @@ test_that("Check error handling", {
 })
 
 test_that("Check parallel = FALSE", {
-  # testthat::skip_on_cran()
-  # testthat::skip_on_travis()
+  testthat::skip_on_cran()
+  testthat::skip_on_travis()
 
   Id <- "593acaa66ccf3b00116deb0f"
 
