@@ -4,10 +4,13 @@
 \alias{get_senseBox_sensor_info}
 \title{Get info (Ids) from sensors of a senseBox}
 \usage{
-get_senseBox_sensor_info(senseBoxId)
+get_senseBox_sensor_info(senseBoxId, parallel = TRUE)
 }
 \arguments{
 \item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}
+
+\item{parallel}{\link{logical} (\strong{optional}): Should the calculations be executed on multiple cores? At least 4 cores
+are necessary to use this feature.}
 }
 \value{
 \link{list}

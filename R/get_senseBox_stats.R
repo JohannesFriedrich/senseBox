@@ -1,15 +1,12 @@
 #' Get statistics about senseBox project
 #'
-#' @return [data.frame]
+#' @return A [data.frame] with "Number of senseBoxes",
+#' "Number of Measurements" and "Number of measurements in last minute" from the senseBox API
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich
 #'
 #' @examples
-#'
-#' ##======================================
-#' ## Example: Get stats about data base
-#' ##======================================
 #'
 #' get_senseBox_stats()
 #'
@@ -22,6 +19,9 @@ get_senseBox_stats <- function() {
   resp <- httr::GET(url)
   if (httr::http_type(resp) != "application/json") {
     stop("API did not return json", call. = FALSE)
+  }
+  if (httr::http_error(resp)){
+    stop("[get_senseBox_sensor_info()] API returned error!", call. = FALSE)
   }
 
   parsed <- jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)

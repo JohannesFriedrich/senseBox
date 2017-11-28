@@ -24,7 +24,7 @@
 </script>
 </head>
 <body>
-    <div class="container template-home">
+    <div class="container template-vignette">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -78,30 +78,256 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="contents col-md-9">
-    <div id="sensebox---a-r-package-for-the-sensebox-api" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#sensebox---a-r-package-for-the-sensebox-api" class="anchor"></a>senseBox - A <strong>R</strong>-package for the senseBox API</h1></div>
+      </header><script src="index_files/htmlwidgets-0.9/htmlwidgets.js"></script><script src="index_files/jquery-1.12.4/jquery.min.js"></script><link href="index_files/leaflet-0.7.7/leaflet.css" rel="stylesheet">
+<script src="index_files/leaflet-0.7.7/leaflet.js"></script><link href="index_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<link href="index_files/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet">
+<script src="index_files/leaflet-label-0.2.2/leaflet.label.js"></script><script src="index_files/Proj4Leaflet-0.7.2/proj4-compressed.js"></script><script src="index_files/Proj4Leaflet-0.7.2/proj4leaflet.js"></script><script src="index_files/leaflet-binding-1.1.0.9000/leaflet.js"></script><div class="row">
+  <div class="col-md-9">
+    
 
-<div id="installation-and-usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-and-usage" class="anchor"></a>Installation and usage</h2>
+    
+    
+<div class="contents">
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<div id="installation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">"devtools"</span>))
   <span class="kw">install.packages</span>(<span class="st">"devtools"</span>)
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"JohannesFriedrich/senseBox@master"</span>)</code></pre></div>
-<p>Download all available senseBoxes</p>
+</div>
+<div id="usage" class="section level3">
+<h3 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h3>
+<p>Get some information about the senseBox project and list all senseBoxIds</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(senseBox)
-list &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_Ids.html">get_senseBox_Ids</a></span>()
-Ids &lt;-<span class="st"> </span>list<span class="op">$</span>senseBoxId[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
-<p>Get some information about the senseBoxId</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Ids &lt;-<span class="st"> </span>list<span class="op">$</span>senseBoxId[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
+## Loading required package: httr
+
+stats &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_stats.html">get_senseBox_stats</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:right;">
+value
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Number of senseBoxes
+</td>
+<td style="text-align:right;">
+949
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of Measurements
+</td>
+<td style="text-align:right;">
+447929079
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of measurements in last minute
+</td>
+<td style="text-align:right;">
+1418
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Id_list &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_Ids.html">get_senseBox_Ids</a></span>(<span class="dt">txtProgressBar =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<table class="table">
+<thead><tr>
+<th style="text-align:left;">
+senseBoxId
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+5386026e5f08822009b8b60d
+</td>
+<td style="text-align:left;">
+CALIMERO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+538ee6a4a83415541576b777
+</td>
+<td style="text-align:left;">
+SenGIS Arbeitsgruppe - Uni Hohenheim
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5391be52a8341554157792e6
+</td>
+<td style="text-align:left;">
+LeKa Berlin
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+539c00c2a83415541578eaf5
+</td>
+<td style="text-align:left;">
+IV Gummersbach
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+539fec94a8341554157931d7
+</td>
+<td style="text-align:left;">
+The PaderWarrior Reloded
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+53a0017aa834155415793281
+</td>
+<td style="text-align:left;">
+Alt-Lietzow
+</td>
+</tr>
+</tbody>
+</table>
+<p>We chose one ID for the following examples</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">senseBoxId &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"592ca4b851d3460011ea2635"</span>)</code></pre></div>
+<p>Show location of senseBox</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">location &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_location.html">get_senseBox_location</a></span>(senseBoxId)
+
+<span class="kw">library</span>(leaflet)
+<span class="kw">library</span>(htmltools)
+
+<span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/leaflet">leaflet</a></span>(location) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addTiles</a></span>() <span class="op">%&gt;%</span><span class="st">  </span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addMarkers</a></span>(<span class="op">~</span>long, <span class="op">~</span>lat, <span class="dt">popup =</span> <span class="op">~</span>htmltools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/htmltools/topics/htmlEscape">htmlEscape</a></span>(name))</code></pre></div>
+<div id="htmlwidget-69cca56275f303725111" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-69cca56275f303725111">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,null,null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>Get some information about the senseBox sensors</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sensor_info &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_sensor_info.html">get_senseBox_sensor_info</a></span>(senseBoxId)</code></pre></div>
+<table class="table">
+<thead><tr>
+<th style="text-align:left;">
+title
+</th>
+<th style="text-align:left;">
+unit
+</th>
+<th style="text-align:left;">
+sensorType
+</th>
+<th style="text-align:left;">
+icon
+</th>
+<th style="text-align:left;">
+_id
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PM10
+</td>
+<td style="text-align:left;">
+µg/m³
+</td>
+<td style="text-align:left;">
+SDS 011
+</td>
+<td style="text-align:left;">
+osem-cloud
+</td>
+<td style="text-align:left;">
+592ca4b851d3460011ea2636
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PM2.5
+</td>
+<td style="text-align:left;">
+µg/m³
+</td>
+<td style="text-align:left;">
+SDS 011
+</td>
+<td style="text-align:left;">
+osem-cloud
+</td>
+<td style="text-align:left;">
+592ca4b851d3460011ea2637
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Temperatur
+</td>
+<td style="text-align:left;">
+°C
+</td>
+<td style="text-align:left;">
+DHT22
+</td>
+<td style="text-align:left;">
+osem-thermometer
+</td>
+<td style="text-align:left;">
+592ca4b851d3460011ea2638
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rel. Luftfeuchte
+</td>
+<td style="text-align:left;">
+%
+</td>
+<td style="text-align:left;">
+DHT22
+</td>
+<td style="text-align:left;">
+osem-humidity
+</td>
+<td style="text-align:left;">
+592ca4b851d3460011ea2639
+</td>
+</tr>
+</tbody>
+</table>
+<p>Download all data from the senseBox back to the last 48 h …</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_all &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_data.html">get_senseBox_data</a></span>(senseBoxId)</code></pre></div>
+<p>… and show the data from all available senors</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(reshape2)
+<span class="kw">library</span>(scales)
+
+data_melt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/reshape2/topics/melt">melt</a></span>(data_all[[<span class="dv">1</span>]], <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">"createdAt"</span>, <span class="st">"value"</span>))
+
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(data_melt, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>createdAt, <span class="dt">y =</span> value, <span class="dt">colour =</span> L1)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_date">scale_x_datetime</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/scales/topics/date_format">date_format</a></span>(<span class="st">"%H:%M:%S"</span>, <span class="dt">tz =</span> <span class="kw">Sys.timezone</span>())) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>L1, <span class="dt">scales =</span> <span class="st">"free"</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>,
+        <span class="dt">legend.title =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/element">element_blank</a></span>())</code></pre></div>
+<p><img src="README_figs/README-plot_sensor_data-1.png" width="672"></p>
 </div>
 </div>
   </div>
 
-  <div class="col-md-3" id="sidebar">
-    <h2>Links</h2>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2 class="hasAnchor">
+<a href="#sidebar" class="anchor"></a>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/JohannesFriedrich/senseBox">https://​github.com/​JohannesFriedrich/​senseBox</a>
 </li>
@@ -122,6 +348,7 @@ Ids &lt;-<span class="st"> </span>list<span class="op">$</span>senseBoxId[<span 
 <li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
 </ul>
 </div>
+
 </div>
 
 

@@ -2,18 +2,21 @@
 % Please edit documentation in R/get_senseBox_sensor_Ids.R
 \name{get_senseBox_sensor_Ids}
 \alias{get_senseBox_sensor_Ids}
-\title{Get sensor Ids from senseBox}
+\title{Get sensor Ids from senseBoxId}
 \usage{
-get_senseBox_sensor_Ids(senseBoxId)
+get_senseBox_sensor_Ids(senseBoxId, parallel = TRUE)
 }
 \arguments{
 \item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}
+
+\item{parallel}{\link{logical} (\strong{optional}): Should the calculations be executed on multiple cores? At least 4 cores
+are necessary to activate this feature.}
 }
 \value{
 \link{list}
 }
 \description{
-Get sensor Ids from senseBox
+Get sensor Ids from senseBoxId
 }
 \section{Function version}{
  0.0.1

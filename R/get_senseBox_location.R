@@ -1,18 +1,15 @@
-#' Get info (Ids) from sensors of a senseBox
+#' Get name, longitude and latitude of the submitted senseBoxId
 #'
 #' @param senseBoxId [character] (**required**): senseBoxId
-#' @return [list]
+#' @return A [data.frame] with name, longtidue and latitude of the submitted senseBoxIds.
+#' This [data.frame] can directly be used in [leaflet::leaflet] to visualise the location of the senseBoxIds.
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich
 #'
 #' @examples
 #'
-#' ##=========================================
-#' ## Example: get senosorIds from one sensBox
-#' ##=========================================
-#'
-#' get_senseBox_sensor_info("593acaa66ccf3b00116deb0f")
+#' get_senseBox_location("593acaa66ccf3b00116deb0f")
 #'
 #' @md
 #' @export
@@ -24,23 +21,27 @@ get_senseBox_location <- function(
   ##=======================================##
 
   if(missing(senseBoxId))
-    stop("[get_one_senseBox()] Argument 'senseBoxId' is missing", call. = FALSE)
+    stop("[get_senseBox_location()] Argument 'senseBoxId' is missing", call. = FALSE)
 
   if(class(unlist(senseBoxId)) != "character")
-    stop("[get_one_senseBox()] Argument 'senseBoxId' has to be a character", call. = FALSE)
+    stop("[get_senseBox_location()] Argument 'senseBoxId' has to be a character", call. = FALSE)
 
+  ## use get_senseBox_info() to get all neccessary information
   info <- get_senseBox_info(senseBoxId)
 
+  ## extract longitude
   long <- lapply(1:length(info), function(x){
 
     info[[x]]$content$currentLocation$coordinates[1]
   })
 
+  ## extract latitude
   lat <- lapply(1:length(info), function(x){
 
     info[[x]]$content$currentLocation$coordinates[2]
   })
 
+  ## extract name of senseBox
   name <- lapply(1:length(info), function(x){
 
     info[[x]]$content$name

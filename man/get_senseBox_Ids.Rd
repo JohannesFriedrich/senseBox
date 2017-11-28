@@ -4,13 +4,13 @@
 \alias{get_senseBox_Ids}
 \title{List all senseBoxIds}
 \usage{
-get_senseBox_Ids(txtProgressBar = TRUE)
+get_senseBox_Ids(progress = FALSE)
 }
 \arguments{
-\item{txtProgressBar}{\link{logical}: Display a progress bar?}
+\item{progress}{\link{logical}: Display the progress of the download?}
 }
 \value{
-\link{data.frame}
+A \link{data.frame} with senseBoxIds and names of every senseBox
 }
 \description{
 List all senseBoxIds
@@ -21,12 +21,10 @@ List all senseBoxIds
 
 \examples{
 
-##================================================
-## Example: Get all available Ids from sensBox API
-##================================================
 \dontrun{
 get_senseBox_Ids()
 }
+
 }
 \author{
 Johannes Friedrich

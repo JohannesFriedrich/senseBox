@@ -1,4 +1,4 @@
-#' Get data from one specific senseBox sensor.
+#' Get data from a senseBox
 #'
 #' If the arguments `fromDate` and `toDate` are NOT given, the measurements from the last 48 h from
 #' now are downloaded. The maximum numbers of downloaded measurements are 10,000.
@@ -9,9 +9,11 @@
 #' @param sensorId [character] or [list] of [character] (**required**): sensorId or a [list] of senseBoxIds
 #' @param fromDate [character] (**optional**): Just show data with from date in format YYYY-mm-dd HH:MM:SS
 #' @param toDate [character] (**optional**): Just show data with up to date in format YYYY-mm-dd HH:MM:SS
-#' @param CSV [logical] (**optional**): Download data as .csv? NOT POSSIBLE UNTIL NOW!
+#' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores? At least 4 cores
+#' are necessary to use this feature.
+#' @param CSV [logical] (**optional**): Download data as csv file? NOT SUPPORTED UNTIL NOW!
 #' @param POSIXct [logical] (**optional**): Should the timestamp be translated into POSIXct?
-#' @return [list]
+#' @return: A [list] with every entry is a sensBoxId. Every list entry inherits a [data.frame] with values and dates.
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich
@@ -47,6 +49,7 @@ get_senseBox_data <- function(
   sensorId = rep("all", times = length(unlist(senseBoxId))),
   fromDate = NULL,
   toDate = NULL,
+  parallel = TRUE,
   CSV = FALSE,
   POSIXct = TRUE){
 
@@ -84,7 +87,7 @@ get_senseBox_data <- function(
       if(all(sensorId[[x]]!= "all")){
         ##check if sensorId is really part of the senseBox
         if(! all(sensorId[[x]] %in% sensor_info$id)){
-          stop("sensorId is not part of the senseBox. Check argument 'sensorId' with function 'get_senseBox_sensor_info()'.", call. = TRUE)
+          stop("[get_senseBox_data()] SensorId is not part of the senseBox. Check argument 'sensorId' with function 'get_senseBox_sensor_info()'.", call. = TRUE)
         } else {
           sensor_index <- which(sensor_info$id %in% sensorId[[x]])
           sensorId_new <- sensor_info$id[sensor_index]
@@ -96,14 +99,21 @@ get_senseBox_data <- function(
       }
     }
 
-    if(parallel::detectCores() <= 2){
-      warning("[get_senseBox_data()] For the multicore auto mode at least 4 cores are needed. Use 1 core to calculate results.", call. = FALSE)
+    ## check number of cores to use
+    if(parallel){
+      if(parallel::detectCores() <= 2){
+        warning("[get_senseBox_data()] For the multicore auto mode at least 4 cores are needed.
+                Use 1 core to calculate results.", call. = FALSE)
+        cores <- 1
+      } else {
+        cores <- parallel::detectCores() - 2
+      }
+    } else {
       cores <- 1
-    }else{
-      cores <- parallel::detectCores() - 2
     }
 
     cl <- parallel::makeCluster(cores)
+    on.exit(parallel::stopCluster(cl))
 
     parsed <- parallel::parLapply(cl, 1:length(sensorId_new), function(y){
 
@@ -119,7 +129,7 @@ get_senseBox_data <- function(
       resp <- httr::GET(url)
 
       if (httr::http_type(resp) != "application/json") {
-        stop("API did not return json\n", call. = FALSE)
+        stop("[get_senseBox_data()] API did not return json\n", call. = FALSE)
       }
 
       if(!http_error(resp$status_code)){
@@ -133,6 +143,7 @@ get_senseBox_data <- function(
           if(POSIXct)
             parsed_single$createdAt <- as.POSIXct(parsed_single$createdAt, tz = "UTC", format = "%Y-%m-%dT%H:%M:%OSZ")
         } else {
+          warning(paste0("[get_senseBox_data()] Sensor data for senseBoxId ",senseBoxId[x], "sensorId ", sensorId_new[y])," not available!", call. = FALSE)
           parsed_single <- "Sensor data not available"
         }
 
@@ -149,9 +160,6 @@ get_senseBox_data <- function(
       } ## end else
 
     }) ## end parsed <- parallel::parLapply ...
-
-    parallel::stopCluster(cl)
-
 
     names(parsed) <- paste0(sensor_info$title[sensor_index], " [",sensor_info$unit[sensor_index], "]")
 

@@ -2,11 +2,11 @@
 % Please edit documentation in R/get_senseBox_data.R
 \name{get_senseBox_data}
 \alias{get_senseBox_data}
-\title{Get data from one specific senseBox sensor.}
+\title{Get data from a senseBox}
 \usage{
 get_senseBox_data(senseBoxId, sensorId = rep("all", times =
   length(unlist(senseBoxId))), fromDate = NULL, toDate = NULL,
-  CSV = FALSE, POSIXct = TRUE)
+  parallel = TRUE, CSV = FALSE, POSIXct = TRUE)
 }
 \arguments{
 \item{senseBoxId}{\link{character}or \link{vector} of \link{character} (\strong{required}): senseBoxId or a \link{vector} of \link{character} of senseBoxIds}
@@ -17,12 +17,15 @@ get_senseBox_data(senseBoxId, sensorId = rep("all", times =
 
 \item{toDate}{\link{character} (\strong{optional}): Just show data with up to date in format YYYY-mm-dd HH:MM:SS}
 
-\item{CSV}{\link{logical} (\strong{optional}): Download data as .csv? NOT POSSIBLE UNTIL NOW!}
+\item{parallel}{\link{logical} (\strong{optional}): Should the calculations be executed on multiple cores? At least 4 cores
+are necessary to use this feature.}
+
+\item{CSV}{\link{logical} (\strong{optional}): Download data as csv file? NOT SUPPORTED UNTIL NOW!}
 
 \item{POSIXct}{\link{logical} (\strong{optional}): Should the timestamp be translated into POSIXct?}
 }
 \value{
-\link{list}
+: A \link{list} with every entry is a sensBoxId. Every list entry inherits a \link{data.frame} with values and dates.
 }
 \description{
 If the arguments \code{fromDate} and \code{toDate} are NOT given, the measurements from the last 48 h from

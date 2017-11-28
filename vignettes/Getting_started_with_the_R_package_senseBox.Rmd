@@ -5,8 +5,8 @@ date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
     fig_caption: yes
-    fig_height: 5
-    fig_width: 5
+    fig_height: 7
+    fig_width: 7
     number_sections: yes
     toc: yes
 vignette: >
@@ -32,7 +32,7 @@ library(senseBox)
 
 stats <- get_senseBox_stats()
 
-list <- get_senseBox_Ids(txtProgressBar = FALSE)
+list <- get_senseBox_Ids()
 senseBoxId <- c("592ca4b851d3460011ea2635")
 ```
 
@@ -47,7 +47,7 @@ See where is the box located? We can easily get an overview and map the location
 First we extract the coordinates of the senseBox. This can be done with `get_senseBox_location()`.
 Note that some extra packages are necessary to display the locations interactively.
 
-```{r}
+```{r, fig.height=5, fig.width=5}
 location <- get_senseBox_location(senseBoxId)
 
 library(leaflet)

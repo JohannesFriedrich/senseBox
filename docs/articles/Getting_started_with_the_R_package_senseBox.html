@@ -81,13 +81,13 @@
       </header><script src="Getting_started_with_the_R_package_senseBox_files/htmlwidgets-0.9/htmlwidgets.js"></script><script src="Getting_started_with_the_R_package_senseBox_files/jquery-1.12.4/jquery.min.js"></script><link href="Getting_started_with_the_R_package_senseBox_files/leaflet-0.7.7/leaflet.css" rel="stylesheet">
 <script src="Getting_started_with_the_R_package_senseBox_files/leaflet-0.7.7/leaflet.js"></script><link href="Getting_started_with_the_R_package_senseBox_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <link href="Getting_started_with_the_R_package_senseBox_files/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet">
-<script src="Getting_started_with_the_R_package_senseBox_files/leaflet-label-0.2.2/leaflet.label.js"></script><script src="Getting_started_with_the_R_package_senseBox_files/Proj4Leaflet-0.7.2/proj4-compressed.js"></script><script src="Getting_started_with_the_R_package_senseBox_files/Proj4Leaflet-0.7.2/proj4leaflet.js"></script><script src="Getting_started_with_the_R_package_senseBox_files/leaflet-binding-1.1.0/leaflet.js"></script><div class="row">
+<script src="Getting_started_with_the_R_package_senseBox_files/leaflet-label-0.2.2/leaflet.label.js"></script><script src="Getting_started_with_the_R_package_senseBox_files/Proj4Leaflet-0.7.2/proj4-compressed.js"></script><script src="Getting_started_with_the_R_package_senseBox_files/Proj4Leaflet-0.7.2/proj4leaflet.js"></script><script src="Getting_started_with_the_R_package_senseBox_files/leaflet-binding-1.1.0.9000/leaflet.js"></script><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Getting started with the R-package senseBox</h1>
                         <h4 class="author">Johannes Friedrich</h4>
             
-            <h4 class="date">2017-11-27</h4>
+            <h4 class="date">2017-11-28</h4>
           </div>
 
     
@@ -130,7 +130,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-446447714
+447929079
 </td>
 </tr>
 <tr>
@@ -138,7 +138,7 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-1353
+1418
 </td>
 </tr>
 </tbody>
@@ -152,8 +152,8 @@ Number of measurements in last minute
 <span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/leaflet">leaflet</a></span>(location) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addTiles</a></span>() <span class="op">%&gt;%</span><span class="st">  </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addMarkers</a></span>(<span class="op">~</span>long, <span class="op">~</span>lat, <span class="dt">popup =</span> <span class="op">~</span>htmltools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/htmltools/topics/htmlEscape">htmlEscape</a></span>(name))</code></pre></div>
-<div id="htmlwidget-63654c73e26e69feb6a0" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-63654c73e26e69feb6a0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,null,null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>But now to the main part of the package: downloading and analysing data from senseBoxes.</p>
+<div id="htmlwidget-643208a09e5efb6843fe" style="width:480px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-643208a09e5efb6843fe">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,null,null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>But now to the main part of the package: downloading and analysing data from senseBoxes.</p>
 <ul>
 <li>Get sensor Ids from a senseBox</li>
 <li>Show some information about the sensor</li>

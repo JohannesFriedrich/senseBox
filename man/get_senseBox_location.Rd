@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_senseBox_location.R
 \name{get_senseBox_location}
 \alias{get_senseBox_location}
-\title{Get info (Ids) from sensors of a senseBox}
+\title{Get name, longitude and latitude of the submitted senseBoxId}
 \usage{
 get_senseBox_location(senseBoxId)
 }
@@ -10,10 +10,11 @@ get_senseBox_location(senseBoxId)
 \item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}
 }
 \value{
-\link{list}
+A \link{data.frame} with name, longtidue and latitude of the submitted senseBoxIds.
+This \link{data.frame} can directly be used in \link[leaflet:leaflet]{leaflet::leaflet} to visualise the location of the senseBoxIds.
 }
 \description{
-Get info (Ids) from sensors of a senseBox
+Get name, longitude and latitude of the submitted senseBoxId
 }
 \section{Function version}{
  0.0.1
@@ -21,11 +22,7 @@ Get info (Ids) from sensors of a senseBox
 
 \examples{
 
-##=========================================
-## Example: get senosorIds from one sensBox
-##=========================================
-
-get_senseBox_sensor_info("593acaa66ccf3b00116deb0f")
+get_senseBox_location("593acaa66ccf3b00116deb0f")
 
 }
 \author{

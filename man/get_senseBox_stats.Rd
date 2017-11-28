@@ -7,7 +7,8 @@
 get_senseBox_stats()
 }
 \value{
-\link{data.frame}
+A \link{data.frame} with "Number of senseBoxes",
+"Number of Measurements" and "Number of measurements in last minute" from the senseBox API
 }
 \description{
 Get statistics about senseBox project
@@ -17,10 +18,6 @@ Get statistics about senseBox project
 }
 
 \examples{
-
-##======================================
-## Example: Get stats about data base
-##======================================
 
 get_senseBox_stats()
 
