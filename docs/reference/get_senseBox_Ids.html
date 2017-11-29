@@ -114,20 +114,20 @@
     <p>List all senseBoxIds</p>
     
 
-    <pre class="usage"><span class='fu'>get_senseBox_Ids</span>(<span class='kw'>txtProgressBar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_senseBox_Ids</span>(<span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>txtProgressBar</th>
-      <td><p>logical: Display a progress bar?</p></td>
+      <th>progress</th>
+      <td><p>logical: Display the progress of the download?</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame</p>
+    <p>A data.frame with senseBoxIds and names of every senseBox</p>
     
     <h2 class="hasAnchor" id="function-version"><a class="anchor" href="#function-version"></a>Function version</h2>
 
@@ -136,12 +136,10 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-##================================================
-## Example: Get all available Ids from sensBox API
-##================================================
 </div><span class='co'># NOT RUN {</span>
 <span class='fu'>get_senseBox_Ids</span>()
-<span class='co'># }</span></pre>
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

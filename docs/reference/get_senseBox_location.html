@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get info (Ids) from sensors of a senseBox — get_senseBox_location • senseBox</title>
+<title>Get name, longitude and latitude of the submitted senseBoxId — get_senseBox_location • senseBox</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -107,11 +107,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get info (Ids) from sensors of a senseBox</h1>
+    <h1>Get name, longitude and latitude of the submitted senseBoxId</h1>
     </div>
 
     
-    <p>Get info (Ids) from sensors of a senseBox</p>
+    <p>Get name, longitude and latitude of the submitted senseBoxId</p>
     
 
     <pre class="usage"><span class='fu'>get_senseBox_location</span>(<span class='no'>senseBoxId</span>)</pre>
@@ -127,7 +127,8 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>A data.frame with name, longtidue and latitude of the submitted senseBoxIds.
+This data.frame can directly be used in <a href='http://www.rdocumentation.org/packages/leaflet/topics/leaflet'>leaflet::leaflet</a> to visualise the location of the senseBoxIds.</p>
     
     <h2 class="hasAnchor" id="function-version"><a class="anchor" href="#function-version"></a>Function version</h2>
 
@@ -136,10 +137,6 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>##=========================================</span>
-<span class='co'>## Example: get senosorIds from one sensBox</span>
-<span class='co'>##=========================================</span>
-
 <span class='fu'>get_senseBox_location</span>(<span class='st'>"593acaa66ccf3b00116deb0f"</span>)</div><div class='output co'>#&gt;                       name     long      lat
 #&gt; 1 Kant-Gymnasium Boppard 1 7.601292 50.23087</div><div class='input'>
 </div></pre>

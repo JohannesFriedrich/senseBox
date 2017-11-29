@@ -4,7 +4,7 @@
 \alias{get_senseBox_info}
 \title{Get info about one senseBox}
 \usage{
-get_senseBox_info(senseBoxId, parallel = TRUE)
+get_senseBox_info(senseBoxId, parallel = FALSE)
 }
 \arguments{
 \item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}

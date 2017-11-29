@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get sensor Ids from senseBox — get_senseBox_sensor_Ids • senseBox</title>
+<title>Get sensor Ids from senseBoxId — get_senseBox_sensor_Ids • senseBox</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -107,14 +107,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get sensor Ids from senseBox</h1>
+    <h1>Get sensor Ids from senseBoxId</h1>
     </div>
 
     
-    <p>Get sensor Ids from senseBox</p>
+    <p>Get sensor Ids from senseBoxId</p>
     
 
-    <pre class="usage"><span class='fu'>get_senseBox_sensor_Ids</span>(<span class='no'>senseBoxId</span>)</pre>
+    <pre class="usage"><span class='fu'>get_senseBox_sensor_Ids</span>(<span class='no'>senseBoxId</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -122,6 +122,11 @@
     <tr>
       <th>senseBoxId</th>
       <td><p>character (<strong>required</strong>): senseBoxId</p></td>
+    </tr>
+    <tr>
+      <th>parallel</th>
+      <td><p>logical (<strong>optional</strong>): Should the calculations be executed on multiple cores? At least 4 cores
+are necessary to activate this feature.</p></td>
     </tr>
     </table>
     

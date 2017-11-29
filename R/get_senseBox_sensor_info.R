@@ -20,7 +20,7 @@
 #' @export
 get_senseBox_sensor_info <- function(
   senseBoxId,
-  parallel = TRUE){
+  parallel = FALSE){
 
   ##=======================================##
   ## ERROR HANDLING

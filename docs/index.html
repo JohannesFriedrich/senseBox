@@ -120,7 +120,7 @@ value
 Number of senseBoxes
 </td>
 <td style="text-align:right;">
-949
+951
 </td>
 </tr>
 <tr>
@@ -128,7 +128,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-447929079
+449356261
 </td>
 </tr>
 <tr>
@@ -136,12 +136,12 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-1418
+1359
 </td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Id_list &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_Ids.html">get_senseBox_Ids</a></span>(<span class="dt">txtProgressBar =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Id_list &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_Ids.html">get_senseBox_Ids</a></span>()</code></pre></div>
 <table class="table">
 <thead><tr>
 <th style="text-align:left;">
@@ -213,8 +213,8 @@ Alt-Lietzow
 <span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/leaflet">leaflet</a></span>(location) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addTiles</a></span>() <span class="op">%&gt;%</span><span class="st">  </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addMarkers</a></span>(<span class="op">~</span>long, <span class="op">~</span>lat, <span class="dt">popup =</span> <span class="op">~</span>htmltools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/htmltools/topics/htmlEscape">htmlEscape</a></span>(name))</code></pre></div>
-<div id="htmlwidget-69cca56275f303725111" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-69cca56275f303725111">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,null,null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>Get some information about the senseBox sensors</p>
+<div id="htmlwidget-1f82176c0ad252f7f564" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1f82176c0ad252f7f564">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,null,null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>Get some information about the senseBox sensors</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sensor_info &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_sensor_info.html">get_senseBox_sensor_info</a></span>(senseBoxId)</code></pre></div>
 <table class="table">
 <thead><tr>
@@ -316,7 +316,7 @@ data_melt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdo
 
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(data_melt, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>createdAt, <span class="dt">y =</span> value, <span class="dt">colour =</span> L1)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_date">scale_x_datetime</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/scales/topics/date_format">date_format</a></span>(<span class="st">"%H:%M:%S"</span>, <span class="dt">tz =</span> <span class="kw">Sys.timezone</span>())) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_date">scale_x_datetime</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/scales/topics/date_format">date_format</a></span>(<span class="st">"%H:%M"</span>, <span class="dt">tz =</span> <span class="kw">Sys.timezone</span>())) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>L1, <span class="dt">scales =</span> <span class="st">"free"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>,
         <span class="dt">legend.title =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/element">element_blank</a></span>())</code></pre></div>

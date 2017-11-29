@@ -6,7 +6,7 @@
 \usage{
 get_senseBox_data(senseBoxId, sensorId = rep("all", times =
   length(unlist(senseBoxId))), fromDate = NULL, toDate = NULL,
-  parallel = TRUE, CSV = FALSE, POSIXct = TRUE)
+  parallel = FALSE, CSV = FALSE, POSIXct = TRUE)
 }
 \arguments{
 \item{senseBoxId}{\link{character}or \link{vector} of \link{character} (\strong{required}): senseBoxId or a \link{vector} of \link{character} of senseBoxIds}

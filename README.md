@@ -38,7 +38,7 @@ value
 Number of senseBoxes
 </td>
 <td style="text-align:right;">
-949
+951
 </td>
 </tr>
 <tr>
@@ -46,7 +46,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-447929079
+449356261
 </td>
 </tr>
 <tr>
@@ -54,13 +54,14 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-1418
+1359
 </td>
 </tr>
 </tbody>
 </table>
+
 ``` r
-Id_list <- get_senseBox_Ids(txtProgressBar = FALSE)
+Id_list <- get_senseBox_Ids()
 ```
 
 <table>
@@ -260,7 +261,7 @@ data_melt <- melt(data_all[[1]], id.vars = c("createdAt", "value"))
 
 ggplot(data_melt, aes(x=createdAt, y = value, colour = L1)) +
   geom_line() +
-  scale_x_datetime(labels = date_format("%H:%M:%S", tz = Sys.timezone())) +
+  scale_x_datetime(labels = date_format("%H:%M", tz = Sys.timezone())) +
   facet_wrap(~L1, scales = "free") +
   theme(legend.position = "bottom",
         legend.title = element_blank())

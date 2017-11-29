@@ -49,7 +49,7 @@ get_senseBox_data <- function(
   sensorId = rep("all", times = length(unlist(senseBoxId))),
   fromDate = NULL,
   toDate = NULL,
-  parallel = TRUE,
+  parallel = FALSE,
   CSV = FALSE,
   POSIXct = TRUE){
 

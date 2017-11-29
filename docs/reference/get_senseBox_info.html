@@ -114,7 +114,7 @@
     <p>Get info about one senseBox</p>
     
 
-    <pre class="usage"><span class='fu'>get_senseBox_info</span>(<span class='no'>senseBoxId</span>)</pre>
+    <pre class="usage"><span class='fu'>get_senseBox_info</span>(<span class='no'>senseBoxId</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -122,6 +122,11 @@
     <tr>
       <th>senseBoxId</th>
       <td><p>character (<strong>required</strong>): senseBoxId</p></td>
+    </tr>
+    <tr>
+      <th>parallel</th>
+      <td><p>logical (<strong>optional</strong>): Should the calculations be executed on multiple cores? At least 4 cores
+are necessary to activate this feature.</p></td>
     </tr>
     </table>
     
@@ -149,7 +154,7 @@
 #&gt; [1] "2017-06-09T16:19:50.930Z"
 #&gt; 
 #&gt; $`593acaa66ccf3b00116deb0f`$content$updatedAt
-#&gt; [1] "2017-11-28T13:38:16.044Z"
+#&gt; [1] "2017-11-29T09:10:49.915Z"
 #&gt; 
 #&gt; $`593acaa66ccf3b00116deb0f`$content$name
 #&gt; [1] "Kant-Gymnasium Boppard 1"
@@ -170,10 +175,10 @@
 #&gt; 3           osem-barometer        Luftdruck    hpa     BMP280
 #&gt; 4          osem-brightness     UV-Strahlung µW/cm²   VEML6070
 #&gt;                        _id lastMeasurement.value lastMeasurement.createdAt
-#&gt; 1 593acaa66ccf3b00116deb10                  22.2  2017-11-28T13:38:14.893Z
-#&gt; 2 593acaa66ccf3b00116deb11                  45.9  2017-11-28T13:38:15.365Z
-#&gt; 3 594a1922a4ad59001148069c                   780  2017-11-28T13:38:15.840Z
-#&gt; 4 594a1a8da4ad5900114816a0                     0  2017-11-28T13:38:16.038Z
+#&gt; 1 593acaa66ccf3b00116deb10                  21.7  2017-11-29T09:10:48.740Z
+#&gt; 2 593acaa66ccf3b00116deb11                  44.9  2017-11-29T09:10:49.223Z
+#&gt; 3 594a1922a4ad59001148069c                   780  2017-11-29T09:10:49.417Z
+#&gt; 4 594a1a8da4ad5900114816a0                     5  2017-11-29T09:10:49.894Z
 #&gt; 
 #&gt; $`593acaa66ccf3b00116deb0f`$content$description
 #&gt; [1] "Die Sensebox misst das \"Klima\" in einem Nebenraum des Kant-Gymnasiums, bis ein geeigneter Standort außerhalb des Gebäudes eingerichtet ist.\nDer Luftdrucksensor ist noch nicht richtig kallibriert."
@@ -202,7 +207,7 @@
 #&gt; 
 #&gt; $`593acaa66ccf3b00116deb0f`$response
 #&gt; Response [https://api.opensensemap.org/boxes/593acaa66ccf3b00116deb0f]
-#&gt;   Date: 2017-11-28 13:38
+#&gt;   Date: 2017-11-29 09:11
 #&gt;   Status: 200
 #&gt;   Content-Type: application/json; charset=utf-8
 #&gt;   Size: 1.5 kB

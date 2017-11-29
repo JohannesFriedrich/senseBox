@@ -5,7 +5,7 @@ Version: 0.0.1
 Date: 2017-XX-XX
 Authors@R: person("Johannes", "Friedrich", role = c("aut", "cre"), email = "Johannes.Friedrich@posteo.de")
 Maintainer: Johannes Friedrich <Johannes.Friedrich@posteo.de>
-Description: An R API for the senseBox project. Download and analyse environmental data provided by https://sensebox.de/en/.
+Description: A R API wrapper for the senseBox project. Download and analyse environmental data provided by https://sensebox.de/en/.
 URL: https://github.com/JohannesFriedrich/senseBox
 BugReports: https://github.com/JohannesFriedrich/senseBox/issues
 License: GPL-3

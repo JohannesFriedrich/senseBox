@@ -22,6 +22,14 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Motivation
 
+The senseBox is a do-it-yourself kit for stationary and mobile sensor stations. With senseBox you can make measurements, helping to answer a variety of scientific questions and to support Citizen Science Projects from the local to global scale. Data collected by senseBox can increase the measured density of various enviromental factors and can contribute to more precise statements regarding climate, pollution or traffic.
+
+openSenseMap is the platform for the publishing of senseBox and other open sensor data. Each senseBox transmits its measurements directly to the map, where anyone can observe, analyze and download the data. 
+
+This is the point where this **R**-pacakge comes into play: The **R**-package senseBox provides access to the senseBox API and enables the user to download, analyse and visualise the data provided by registered senseBoxes.
+
+With pacakges like `ggplot2` or `plotly` **R** is the perfect tool to visualise data.
+In the next chapter you find a short introduction to the basic usage of this **R**-package and some examples how to visualise the data.
 
 # Usage
 
@@ -115,7 +123,7 @@ data_melt <- melt(data_all[[1]], id.vars = c("createdAt", "value"))
 
 ggplot(data_melt, aes(x=createdAt, y = value, colour = L1)) +
   geom_line() +
-  scale_x_datetime(labels = date_format("%H:%M:%S", tz = Sys.timezone())) +
+  scale_x_datetime(labels = date_format("%H:%M", tz = Sys.timezone())) +
   facet_wrap(~L1, scales = "free") +
   theme(legend.position = "bottom",
         legend.title = element_blank())
