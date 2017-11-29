@@ -72,5 +72,4 @@ get_senseBox_sensor_info <- function(
 
   return(parsed)
 
-
 }
