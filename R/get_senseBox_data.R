@@ -57,18 +57,18 @@ get_senseBox_data <- function(
   ## ERROR HANDLING
   ##=======================================##
 
-  if(missing(senseBoxId))
+  if (missing(senseBoxId))
     stop("[get_senseBox_data()] Argument 'senseBoxId' is missing", call. = FALSE)
 
-  if(class(unlist(senseBoxId)) != "character")
+  if (class(unlist(senseBoxId)) != "character")
     stop("[get_senseBox_data()] Argument 'senseBoxId' has to be a character", call. = FALSE)
 
-  if(class(unlist(sensorId)) != "character")
+  if (class(unlist(sensorId)) != "character")
     stop("[get_senseBox_data()] Argument 'sensorId' has to be a character", call. = FALSE)
 
   ##==== END ERROR HANDLING
 
-  if(length(sensorId) < length(senseBoxId) && sensorId == "all"){
+  if (length(sensorId) < length(senseBoxId) && sensorId == "all") {
     sensorId <- rep(sensorId[1], times = length(senseBoxId))
   }
 
@@ -83,25 +83,26 @@ get_senseBox_data <- function(
       stringsAsFactors = F
       )
 
-    for(i in 1:length(sensorId[[x]])){
-      if(all(sensorId[[x]]!= "all")){
+    for (i in 1:length(sensorId[[x]])) {
+      if (all(sensorId[[x]] != "all")) {
         ##check if sensorId is really part of the senseBox
-        if(! all(sensorId[[x]] %in% sensor_info$id)){
-          stop("[get_senseBox_data()] SensorId is not part of the senseBox. Check argument 'sensorId' with function 'get_senseBox_sensor_info()'.", call. = TRUE)
+        if (!all(sensorId[[x]] %in% sensor_info$id)) {
+          stop("[get_senseBox_data()] SensorId is not part of the senseBox.
+               Check argument 'sensorId' with function 'get_senseBox_sensor_info()'.", call. = TRUE)
         } else {
           sensor_index <- which(sensor_info$id %in% sensorId[[x]])
           sensorId_new <- sensor_info$id[sensor_index]
         }
 
-      } else { ## sensorId = "all"
+      } else {## sensorId = "all"
         sensor_index <- 1:length(sensor_info$id)
         sensorId_new <- sensor_info$id
       }
     }
 
     ## check number of cores to use
-    if(parallel){
-      if(parallel::detectCores() <= 2){
+    if (parallel) {
+      if (parallel::detectCores() <= 2) {
         warning("[get_senseBox_data()] For the multicore auto mode at least 4 cores are needed.
                 Use 1 core to calculate results.", call. = FALSE)
         cores <- 1
@@ -132,15 +133,15 @@ get_senseBox_data <- function(
         stop("[get_senseBox_data()] API did not return json\n", call. = FALSE)
       }
 
-      if(!http_error(resp$status_code)){
+      if (!http_error(resp$status_code)) {
 
         parsed_single <- jsonlite::fromJSON(httr::content(resp, "text"))
 
-        if(length(parsed_single) != 0){
+        if (length(parsed_single) != 0) {
 
           parsed_single$value <- as.numeric(parsed_single$value)
 
-          if(POSIXct)
+          if (POSIXct)
             parsed_single$createdAt <- as.POSIXct(parsed_single$createdAt, tz = "UTC", format = "%Y-%m-%dT%H:%M:%OSZ")
         } else {
           warning(paste0("[get_senseBox_data()] Sensor data for senseBoxId ",senseBoxId[x], "sensorId ", sensorId_new[y])," not available!", call. = FALSE)

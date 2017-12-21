@@ -26,14 +26,14 @@ get_senseBox_sensor_Ids <- function(
   ## ERROR HANDLING
   ##=======================================##
 
-  if(missing(senseBoxId))
+  if (missing(senseBoxId))
     stop("[get_senseBox_sensor_Ids()] Argument 'senseBoxId' is missing", call. = FALSE)
 
-  if(class(unlist(senseBoxId)) != "character")
+  if (class(unlist(senseBoxId)) != "character")
     stop("[get_senseBox_sensor_Ids()]  Argument 'senseBoxId' has to be a character", call. = FALSE)
 
-  if(parallel){
-    if(parallel::detectCores() <= 2){
+  if (parallel) {
+    if (parallel::detectCores() <= 2) {
       warning("[get_senseBox_sensor_Ids()] For the multicore auto mode at least 4 cores are needed.
                 Use 1 core to calculate results.", call. = FALSE)
       cores <- 1
@@ -49,18 +49,8 @@ get_senseBox_sensor_Ids <- function(
 
   parsed <- parallel::parLapply(cl, 1:length(senseBoxId), function(x){
 
-    url <- paste0("https://api.opensensemap.org/boxes/", senseBoxId[x])
-
-    resp <- httr::GET(url)
-
-    if (httr::http_type(resp) != "application/json") {
-      stop("[get_senseBox_sensor_Ids()] API did not return json", call. = FALSE)
-    }
-    if (httr::http_error(resp)){
-      stop("[get_senseBox_sensor_Ids()] API returned error!", call. = FALSE)
-    }
-
-    parsed_single <- jsonlite::fromJSON(httr::content(resp, "text"))
+    temp <- .create_senseBox_request(path = c("boxes", senseBoxId[x]), type = "text")
+    parsed_single <- jsonlite::fromJSON(temp)
 
     return(parsed_single$sensors$`_id`)
   })

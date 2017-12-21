@@ -51,18 +51,8 @@ get_senseBox_sensor_info <- function(
   ## get data
   parsed <- parallel::parLapply(cl, 1:length(senseBoxId), function(x){
 
-    url <- paste0("https://api.opensensemap.org/boxes/", senseBoxId[x])
-
-    resp <- httr::GET(url)
-
-    if (httr::http_type(resp) != "application/json") {
-      stop("[get_senseBox_sensor_info()] API did not return json", call. = FALSE)
-    }
-    if (httr::http_error(resp)){
-      stop("[get_senseBox_sensor_info()] API returned error!", call. = FALSE)
-    }
-
-    parsed_single <- jsonlite::fromJSON(httr::content(resp, "text"))
+    temp <- .create_senseBox_request(path = c("boxes", senseBoxId[x]), type = "text")
+    parsed_single <- jsonlite::fromJSON(temp)
 
     return(parsed_single$sensors)
 

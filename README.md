@@ -7,7 +7,7 @@
 ``` r
 if(!require("devtools"))
   install.packages("devtools")
-devtools::install_github("JohannesFriedrich/senseBox@master")
+devtools::install_github("JohannesFriedrich/senseBox")
 ```
 
 ### Usage
@@ -38,7 +38,7 @@ value
 Number of senseBoxes
 </td>
 <td style="text-align:right;">
-951
+1020
 </td>
 </tr>
 <tr>
@@ -46,7 +46,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-449356261
+491117755
 </td>
 </tr>
 <tr>
@@ -54,12 +54,11 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-1359
+1308
 </td>
 </tr>
 </tbody>
 </table>
-
 ``` r
 Id_list <- get_senseBox_Ids()
 ```
@@ -141,6 +140,7 @@ library(leaflet)
 library(htmltools)
 
 leaflet(location) %>%
+  addProviderTiles(providers$OpenStreetMap) %>% 
   addTiles() %>%  
   addMarkers(~long, ~lat, popup = ~htmltools::htmlEscape(name))
 ```
@@ -244,22 +244,41 @@ osem-humidity
 </tr>
 </tbody>
 </table>
-Download all data from the senseBox back to the last 48 h ...
+We can now download data from the senseBox, either from a specific sensorId or from all sensors within the sensBox. In the following we are downloading all available sensors.
 
 ``` r
 data_all <- get_senseBox_data(senseBoxId)
 ```
 
-... and show the data from all available senors
+When you are interested in just a selection of sensors, just submit the sensorIds to the function `get_senseBox_data()`.
+
+``` r
+sensor_ids <- get_senseBox_sensor_Ids(senseBoxId)
+
+data_sel <- get_senseBox_data(senseBoxId, 
+                              sensorId = list(sensor_ids[[1]][1:2]))
+```
+
+When using the above code, by defatult, the data from the last 48 h will be downloaded. You can donwload up to 10,000 records and sepcify the date of the record. The maximum time frame for downloading data is back to one month from now. Use the argument `fromDate` and `toDate` to specify the desired time frame.
+
+``` r
+data_timeframe <- get_senseBox_data(senseBoxId, 
+                                    sensor_ids, 
+                                    fromDate = "2017-11-11 11:11:11", 
+                                    toDate = "2017-11-12 11:11:11")
+```
+
+Visualising the results from all sensors is one of the main aims and we recommend using the **R**-package `ggplot2`. We provide a sample code next and you just have to change the data executed in the function `melt()`.
 
 ``` r
 library(ggplot2)
 library(reshape2)
 library(scales)
 
-data_melt <- melt(data_all[[1]], id.vars = c("createdAt", "value"))
 
-ggplot(data_melt, aes(x=createdAt, y = value, colour = L1)) +
+data_melt <- melt(data_timeframe[[1]], id.vars = c("createdAt", "value"))
+
+ggplot(data_melt, aes(x = createdAt, y = value, colour = L1)) +
   geom_line() +
   scale_x_datetime(labels = date_format("%H:%M", tz = Sys.timezone())) +
   facet_wrap(~L1, scales = "free") +
@@ -267,4 +286,4 @@ ggplot(data_melt, aes(x=createdAt, y = value, colour = L1)) +
         legend.title = element_blank())
 ```
 
-<img src="README_figs/README-plot_sensor_data-1.png" width="672" />
+<img src="README_figs/README-unnamed-chunk-8-1.png" width="672" />

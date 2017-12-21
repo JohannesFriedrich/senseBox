@@ -81,7 +81,7 @@
       </header><script src="index_files/htmlwidgets-0.9/htmlwidgets.js"></script><script src="index_files/jquery-1.12.4/jquery.min.js"></script><link href="index_files/leaflet-0.7.7/leaflet.css" rel="stylesheet">
 <script src="index_files/leaflet-0.7.7/leaflet.js"></script><link href="index_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <link href="index_files/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet">
-<script src="index_files/leaflet-label-0.2.2/leaflet.label.js"></script><script src="index_files/Proj4Leaflet-0.7.2/proj4-compressed.js"></script><script src="index_files/Proj4Leaflet-0.7.2/proj4leaflet.js"></script><script src="index_files/leaflet-binding-1.1.0.9000/leaflet.js"></script><div class="row">
+<script src="index_files/leaflet-label-0.2.2/leaflet.label.js"></script><script src="index_files/Proj4Leaflet-0.7.2/proj4-compressed.js"></script><script src="index_files/Proj4Leaflet-0.7.2/proj4leaflet.js"></script><script src="index_files/leaflet-binding-1.1.0.9000/leaflet.js"></script><script src="index_files/leaflet-providers-1.0.27/leaflet-providers.js"></script><script src="index_files/leaflet-providers-plugin-1.1.0.9000/leaflet-providers-plugin.js"></script><div class="row">
   <div class="col-md-9">
     
 
@@ -95,7 +95,7 @@
 <a href="#installation" class="anchor"></a>Installation</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">"devtools"</span>))
   <span class="kw">install.packages</span>(<span class="st">"devtools"</span>)
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"JohannesFriedrich/senseBox@master"</span>)</code></pre></div>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"JohannesFriedrich/senseBox"</span>)</code></pre></div>
 </div>
 <div id="usage" class="section level3">
 <h3 class="hasAnchor">
@@ -120,7 +120,7 @@ value
 Number of senseBoxes
 </td>
 <td style="text-align:right;">
-951
+1020
 </td>
 </tr>
 <tr>
@@ -128,7 +128,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-449356261
+491117755
 </td>
 </tr>
 <tr>
@@ -136,7 +136,7 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-1359
+1308
 </td>
 </tr>
 </tbody>
@@ -211,10 +211,11 @@ Alt-Lietzow
 <span class="kw">library</span>(htmltools)
 
 <span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/leaflet">leaflet</a></span>(location) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/addProviderTiles">addProviderTiles</a></span>(providers<span class="op">$</span>OpenStreetMap) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addTiles</a></span>() <span class="op">%&gt;%</span><span class="st">  </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addMarkers</a></span>(<span class="op">~</span>long, <span class="op">~</span>lat, <span class="dt">popup =</span> <span class="op">~</span>htmltools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/htmltools/topics/htmlEscape">htmlEscape</a></span>(name))</code></pre></div>
-<div id="htmlwidget-1f82176c0ad252f7f564" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1f82176c0ad252f7f564">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,null,null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>Get some information about the senseBox sensors</p>
+<div id="htmlwidget-427d80e143306c7a8aa9" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-427d80e143306c7a8aa9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,null,null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>Get some information about the senseBox sensors</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sensor_info &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_sensor_info.html">get_senseBox_sensor_info</a></span>(senseBoxId)</code></pre></div>
 <table class="table">
 <thead><tr>
@@ -305,22 +306,33 @@ osem-humidity
 </tr>
 </tbody>
 </table>
-<p>Download all data from the senseBox back to the last 48 h …</p>
+<p>We can now download data from the senseBox, either from a specific sensorId or from all sensors within the sensBox. In the following we are downloading all available sensors.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_all &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_data.html">get_senseBox_data</a></span>(senseBoxId)</code></pre></div>
-<p>… and show the data from all available senors</p>
+<p>When you are interested in just a selection of sensors, just submit the sensorIds to the function <code><a href="reference/get_senseBox_data.html">get_senseBox_data()</a></code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sensor_ids &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_sensor_Ids.html">get_senseBox_sensor_Ids</a></span>(senseBoxId)
+
+data_sel &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_data.html">get_senseBox_data</a></span>(senseBoxId, 
+                              <span class="dt">sensorId =</span> <span class="kw">list</span>(sensor_ids[[<span class="dv">1</span>]][<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]))</code></pre></div>
+<p>When using the above code, by defatult, the data from the last 48 h will be downloaded. You can donwload up to 10,000 records and sepcify the date of the record. The maximum time frame for downloading data is back to one month from now. Use the argument <code>fromDate</code> and <code>toDate</code> to specify the desired time frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_timeframe &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_senseBox_data.html">get_senseBox_data</a></span>(senseBoxId, 
+                                    sensor_ids, 
+                                    <span class="dt">fromDate =</span> <span class="st">"2017-11-11 11:11:11"</span>, 
+                                    <span class="dt">toDate =</span> <span class="st">"2017-11-12 11:11:11"</span>)</code></pre></div>
+<p>Visualising the results from all sensors is one of the main aims and we recommend using the <strong>R</strong>-package <code>ggplot2</code>. We provide a sample code next and you just have to change the data executed in the function <code><a href="http://www.rdocumentation.org/packages/reshape2/topics/melt">melt()</a></code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw">library</span>(reshape2)
 <span class="kw">library</span>(scales)
 
-data_melt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/reshape2/topics/melt">melt</a></span>(data_all[[<span class="dv">1</span>]], <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">"createdAt"</span>, <span class="st">"value"</span>))
 
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(data_melt, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>createdAt, <span class="dt">y =</span> value, <span class="dt">colour =</span> L1)) <span class="op">+</span>
+data_melt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/reshape2/topics/melt">melt</a></span>(data_timeframe[[<span class="dv">1</span>]], <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">"createdAt"</span>, <span class="st">"value"</span>))
+
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(data_melt, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> createdAt, <span class="dt">y =</span> value, <span class="dt">colour =</span> L1)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_date">scale_x_datetime</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/scales/topics/date_format">date_format</a></span>(<span class="st">"%H:%M"</span>, <span class="dt">tz =</span> <span class="kw">Sys.timezone</span>())) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>L1, <span class="dt">scales =</span> <span class="st">"free"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>,
         <span class="dt">legend.title =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/element">element_blank</a></span>())</code></pre></div>
-<p><img src="README_figs/README-plot_sensor_data-1.png" width="672"></p>
+<p><img src="README_figs/README-unnamed-chunk-8-1.png" width="672"></p>
 </div>
 </div>
   </div>

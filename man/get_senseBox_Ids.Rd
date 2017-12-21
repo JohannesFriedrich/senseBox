@@ -4,10 +4,7 @@
 \alias{get_senseBox_Ids}
 \title{List all senseBoxIds}
 \usage{
-get_senseBox_Ids(progress = FALSE)
-}
-\arguments{
-\item{progress}{\link{logical}: Display the progress of the download?}
+get_senseBox_Ids()
 }
 \value{
 A \link{data.frame} with senseBoxIds and names of every senseBox
