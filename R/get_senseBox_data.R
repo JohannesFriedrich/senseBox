@@ -13,7 +13,7 @@
 #' are necessary to use this feature.
 #' @param CSV [logical] (**optional**): Download data as csv file? NOT SUPPORTED UNTIL NOW!
 #' @param POSIXct [logical] (**optional**): Should the timestamp be translated into POSIXct?
-#' @return: A [list] with every entry is a sensBoxId. Every list entry inherits a [data.frame] with values and dates.
+#' @return A [list] with every entry is a sensBoxId. Every list entry inherits a [data.frame] with values and dates.
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich
@@ -142,7 +142,7 @@ get_senseBox_data <- function(
           parsed_single$value <- as.numeric(parsed_single$value)
 
           if (POSIXct)
-            parsed_single$createdAt <- as.POSIXct(parsed_single$createdAt, tz = "UTC", format = "%Y-%m-%dT%H:%M:%OSZ")
+            parsed_single$createdAt <- as.POSIXct(parsed_single$createdAt, tz = Sys.timezone(), format = "%Y-%m-%dT%H:%M:%OSZ")
         } else {
           warning(paste0("[get_senseBox_data()] Sensor data for senseBoxId ",senseBoxId[x], "sensorId ", sensorId_new[y])," not available!", call. = FALSE)
           parsed_single <- "Sensor data not available"
@@ -169,6 +169,8 @@ get_senseBox_data <- function(
     }) ## end Ids_loop <- lapply
 
   names(Ids_loop) <- senseBoxId
+
+  # Ids_loop <- parse_senseBoxData(Ids_loop)
 
   return(Ids_loop)
 }

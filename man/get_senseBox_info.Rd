@@ -9,8 +9,8 @@ get_senseBox_info(senseBoxId, parallel = FALSE)
 \arguments{
 \item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}
 
-\item{parallel}{\link{logical} (\strong{optional}): Should the calculations be executed on multiple cores? At least 4 cores
-are necessary to activate this feature.}
+\item{parallel}{\link{logical} (\strong{optional}): Should the calculations be executed on multiple cores?
+At least 4 cores are necessary to activate this feature.}
 }
 \value{
 \link{list}

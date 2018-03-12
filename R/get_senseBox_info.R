@@ -1,8 +1,8 @@
 #' Get info about one senseBox
 #'
 #' @param senseBoxId [character] (**required**): senseBoxId
-#' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores? At least 4 cores
-#' are necessary to activate this feature.
+#' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores?
+#' At least 4 cores are necessary to activate this feature.
 #' @return [list]
 #'
 #' @section Function version: 0.0.1
@@ -26,14 +26,14 @@ get_senseBox_info <- function(
   ## ERROR HANDLING
   ##=======================================##
 
-  if(missing(senseBoxId))
+  if (missing(senseBoxId))
     stop("[get_senseBox_info()] Argument 'senseBoxId' is missing", call. = FALSE)
 
-  if(class(unlist(senseBoxId)) != "character")
+  if (class(unlist(senseBoxId)) != "character")
     stop("[get_one_senseBox_info()] Argument 'senseBoxId' has to be a character", call. = FALSE)
 
-  if(parallel){
-    if(parallel::detectCores() <= 2){
+  if (parallel) {
+    if (parallel::detectCores() <= 2) {
       warning("[get_senseBox_info()] For the multicore auto mode at least 4 cores are needed.
                 Use 1 core to calculate results.", call. = FALSE)
       cores <- 1
@@ -52,15 +52,17 @@ get_senseBox_info <- function(
     temp <- .create_senseBox_request(path = c("boxes", senseBoxId[x]), type = "text")
     parsed_single <- jsonlite::fromJSON(temp)
 
-    result <- list(
-      content = parsed_single,
-      senseBoxId = senseBoxId[x])
+    # result <- list(
+    #   content = parsed_single,
+    #   senseBoxId = senseBoxId[x])
 
-    return(result)
+    return(parsed_single)
+
+    # return(result)
 
   })
 
-  names(parsed) <- senseBoxId
+  # names(parsed) <- senseBoxId
 
   return(parsed)
 }

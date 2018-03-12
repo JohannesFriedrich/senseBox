@@ -25,7 +25,7 @@ are necessary to use this feature.}
 \item{POSIXct}{\link{logical} (\strong{optional}): Should the timestamp be translated into POSIXct?}
 }
 \value{
-: A \link{list} with every entry is a sensBoxId. Every list entry inherits a \link{data.frame} with values and dates.
+A \link{list} with every entry is a sensBoxId. Every list entry inherits a \link{data.frame} with values and dates.
 }
 \description{
 If the arguments \code{fromDate} and \code{toDate} are NOT given, the measurements from the last 48 h from
