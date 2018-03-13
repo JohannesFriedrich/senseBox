@@ -3,6 +3,7 @@
 #' @param senseBoxId [character] (**required**): senseBoxId
 #' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores? At least 4 cores
 #' are necessary to use this feature.
+#' @param tidy [logical] (**optional**): Should the output be a tidy data frame?
 #' @return [list]
 #'
 #' @section Function version: 0.0.1
@@ -20,46 +21,30 @@
 #' @export
 get_senseBox_sensor_info <- function(
   senseBoxId,
-  parallel = FALSE){
+  parallel = FALSE,
+  tidy = FALSE){
 
   ##=======================================##
   ## ERROR HANDLING
   ##=======================================##
 
-  if(missing(senseBoxId))
+  if (missing(senseBoxId))
     stop("[get_senseBox_sensor_info()] Argument 'senseBoxId' is missing", call. = FALSE)
 
-  if(class(unlist(senseBoxId)) != "character")
+  if (class(unlist(senseBoxId)) != "character")
     stop("[get_senseBox_sensor_info()] Argument 'senseBoxId' has to be a character", call. = FALSE)
 
-  ## check number of cores to use
-  if(parallel){
-    if(parallel::detectCores() <= 2){
-      warning("[get_senseBox_data()] For the multicore auto mode at least 4 cores are needed.
-                Use 1 core to calculate results.", call. = FALSE)
-      cores <- 1
-    } else {
-      cores <- parallel::detectCores() - 2
-    }
-  } else {
-    cores <- 1
-  }
+  if (class(parallel) != "logical")
+    stop("[get_senseBox_sensor_info()] Argument 'parallel' has to be logical", call. = FALSE)
 
-  cl <- parallel::makeCluster(cores)
-  on.exit(parallel::stopCluster(cl))
+  ## use get_senseBox_info() to get all neccessary information
+  info <- get_senseBox_info(senseBoxId, parallel = parallel)
 
-  ## get data
-  parsed <- parallel::parLapply(cl, 1:length(senseBoxId), function(x){
+  df <- dplyr::select_(info, "name", "phenomena", "unit", "sensorIds", "sensorType")
 
-    temp <- .create_senseBox_request(path = c("boxes", senseBoxId[x]), type = "text")
-    parsed_single <- jsonlite::fromJSON(temp)
+  if (tidy)
+    df <- tidyr::unnest_(df, c("phenomena", "unit", "sensorIds", "sensorType"))
 
-    return(parsed_single$sensors)
-
-    })
-
-  names(parsed) <- senseBoxId
-
-  return(parsed)
+  return(df)
 
 }

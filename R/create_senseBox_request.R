@@ -1,4 +1,4 @@
-#' Get name, longitude and latitude of the submitted senseBoxId
+#' Create a reqeust to the senseBox API. This is the main function of the package.
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich

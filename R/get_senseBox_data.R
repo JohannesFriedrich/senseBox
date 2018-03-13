@@ -74,29 +74,22 @@ get_senseBox_data <- function(
 
   Ids_loop <- lapply(1:length(senseBoxId), function(x){
 
-    sensor_info <- get_senseBox_sensor_info(senseBoxId[x])
-
-    sensor_info <-  data.frame(
-      title = sensor_info[[1]]$title,
-      unit = sensor_info[[1]]$unit,
-      id = sensor_info[[1]]$`_id`,
-      stringsAsFactors = F
-      )
+    sensor_info <- get_senseBox_sensor_info(senseBoxId[x], tidy = T)
 
     for (i in 1:length(sensorId[[x]])) {
       if (all(sensorId[[x]] != "all")) {
         ##check if sensorId is really part of the senseBox
-        if (!all(sensorId[[x]] %in% sensor_info$id)) {
+        if (!all(sensorId[[x]] %in% sensor_info$sensorIds)) {
           stop("[get_senseBox_data()] SensorId is not part of the senseBox.
                Check argument 'sensorId' with function 'get_senseBox_sensor_info()'.", call. = TRUE)
         } else {
-          sensor_index <- which(sensor_info$id %in% sensorId[[x]])
-          sensorId_new <- sensor_info$id[sensor_index]
+          sensor_index <- which(sensor_info$sensorIds %in% sensorId[[x]])
+          sensorId_new <- sensor_info$sensorIds[sensor_index]
         }
 
       } else {## sensorId = "all"
-        sensor_index <- 1:length(sensor_info$id)
-        sensorId_new <- sensor_info$id
+        sensor_index <- 1:length(sensor_info$sensorIds)
+        sensorId_new <- sensor_info$sensorIds
       }
     }
 
@@ -162,7 +155,7 @@ get_senseBox_data <- function(
 
     }) ## end parsed <- parallel::parLapply ...
 
-    names(parsed) <- paste0(sensor_info$title[sensor_index], " [",sensor_info$unit[sensor_index], "]")
+    names(parsed) <- paste0(sensor_info$phenomena[sensor_index], " [",sensor_info$unit[sensor_index], "]")
 
     return(parsed)
 

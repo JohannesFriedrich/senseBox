@@ -55,6 +55,10 @@ test_that("Check error handling", {
 
   expect_error(get_senseBox_data("fail"), NULL)
 
+  expect_error(get_senseBox_data(
+    senseBoxId = "5957b67494f0520011304cc1",
+    sensorId = list(c("5957b67494f0520011304cc0"))))
+
 })
 
 test_that("Check parallel = TRUE", {

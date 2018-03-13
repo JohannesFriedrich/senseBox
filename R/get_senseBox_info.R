@@ -49,20 +49,15 @@ get_senseBox_info <- function(
 
   parsed <- parallel::parLapply(cl, 1:length(senseBoxId), function(x){
 
-    temp <- .create_senseBox_request(path = c("boxes", senseBoxId[x]), type = "text")
-    parsed_single <- jsonlite::fromJSON(temp)
+    temp <- .create_senseBox_request(path = c("boxes", senseBoxId[x]))
 
-    # result <- list(
-    #   content = parsed_single,
-    #   senseBoxId = senseBoxId[x])
-
-    return(parsed_single)
-
-    # return(result)
+    return(temp)
 
   })
 
-  # names(parsed) <- senseBoxId
+  parsed_list <- lapply(parsed, parse_senseBoxData)
 
-  return(parsed)
+  df_parsed <- dplyr::bind_rows(parsed_list)
+
+  return(df_parsed)
 }

@@ -42,6 +42,7 @@ knitr::kable(
 )
 ```
 
+With the function `get_senseBox_Ids()` you obtain all available senseBox Ids and the name of the staion.
 
 ```{r}
 Id_list <- get_senseBox_Ids()
@@ -53,11 +54,24 @@ knitr::kable(
   format = "html")
 ```
 
+You are just interested in senseBoxes, which collect data from "indoor"? So use the function `search_senseBox()`.
+
+```{r}
+indoor <- search_senseBox(exposure =  "indoor")
+```
+
+```{r echo = FALSE}
+knitr::kable(
+  head(indoor, 3),
+  format = "html")
+
+```
+
 
 We chose one ID for the following examples
 
 ```{r set senseBoxId}
-senseBoxId <- c("592ca4b851d3460011ea2635")
+senseBoxId <- "592ca4b851d3460011ea2635"
 ```
 
 Show location of senseBox
@@ -82,11 +96,23 @@ sensor_info <- get_senseBox_sensor_info(senseBoxId)
 
 ```{r print_sensor_info, echo = FALSE}
 knitr::kable(
-  sensor_info[[1]][,1:5],
+  sensor_info,
   format = "html"
 )
 ```
 
+With the argument `tidy = TRUE` a tidy data.frame will be produced:
+
+```{r get_senseBox_sensor_info_tidy}
+sensor_info <- get_senseBox_sensor_info(senseBoxId, tidy = TRUE)
+```
+
+```{r print_sensor_info_tidy, echo = FALSE}
+knitr::kable(
+  sensor_info,
+  format = "html"
+)
+```
 
 We can now download data from the senseBox, either from a specific sensorId or from all sensors within the sensBox.
 In the following we are downloading all available sensors.
@@ -102,15 +128,14 @@ When you are interested in just a selection of sensors, just submit the sensorId
 sensor_ids <- get_senseBox_sensor_Ids(senseBoxId)
 
 data_sel <- get_senseBox_data(senseBoxId, 
-                              sensorId = list(sensor_ids[[1]][1:2]))
+                              sensorId = sensor_ids$sensorIds[1:2])
 ```
 
-When using the above code, by defatult, the data from the last 48 h will be downloaded. You can donwload up to 10,000 records and sepcify the date of the record. The maximum time frame for downloading data is back to one month from now.
-Use the argument `fromDate` and `toDate` to specify the desired time frame. 
+When using the above code, by default, the data from the last 48 h will be downloaded. You can donwload up to 10,000 records and sepcify the date of the record. The maximum time frame for downloading data is back to one month from now.
+Use the argument `fromDate` and `toDate` to specify the desired time frame. Note that in contrast to the code above, all sensors from the senseBox are requested (by default) because argument `sensorId` is not set.
 
 ```{r}
 data_timeframe <- get_senseBox_data(senseBoxId, 
-                                    sensor_ids, 
                                     fromDate = "2017-11-11 11:11:11", 
                                     toDate = "2017-11-12 11:11:11")
 ```
@@ -124,12 +149,12 @@ library(reshape2)
 library(scales)
 
 
-data_melt <- melt(data_timeframe[[1]], id.vars = c("createdAt", "value"))
+data_melt <- melt(data_timeframe, id.vars = c("createdAt", "value"))
 
-ggplot(data_melt, aes(x = createdAt, y = value, colour = L1)) +
+ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
   geom_line() +
   scale_x_datetime(labels = date_format("%H:%M", tz = Sys.timezone())) +
-  facet_wrap(~L1, scales = "free") +
+  facet_wrap(~L2, scales = "free") +
   theme(legend.position = "bottom",
         legend.title = element_blank())
 

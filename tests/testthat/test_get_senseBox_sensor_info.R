@@ -8,8 +8,8 @@ test_that("Check output length and class", {
 
   temp <- get_senseBox_sensor_info(Id)
 
-  expect_equal(class(temp), "list")
-  expect_equal(names(temp), Id)
+  expect_equal(class(temp), "data.frame")
+  expect_equal(names(temp), c("name", "phenomena", "unit", "sensorIds","sensorType"))
 
 })
 
@@ -27,10 +27,10 @@ test_that("Check parallel = TRUE", {
 
   Id <- "593acaa66ccf3b00116deb0f"
 
-  temp <- get_senseBox_sensor_info(Id,parallel = TRUE)
+  temp <- get_senseBox_sensor_info(Id, parallel = TRUE)
 
-  expect_equal(class(temp), "list")
-  expect_equal(names(temp), Id)
+  expect_equal(class(temp), "data.frame")
+  expect_equal(names(temp), c("name", "phenomena", "unit", "sensorIds","sensorType"))
 
 
 })

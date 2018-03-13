@@ -4,10 +4,13 @@
 \alias{get_senseBox_location}
 \title{Get name, longitude and latitude of the submitted senseBoxId}
 \usage{
-get_senseBox_location(senseBoxId)
+get_senseBox_location(senseBoxId, parallel = FALSE)
 }
 \arguments{
 \item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}
+
+\item{parallel}{\link{logical} (\strong{optional}): Should the calculations be executed on multiple cores? At least 4 cores
+are necessary to use this feature.}
 }
 \value{
 A \link{data.frame} with name, longtidue and latitude of the submitted senseBoxIds.

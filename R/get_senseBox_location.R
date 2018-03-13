@@ -1,6 +1,9 @@
 #' Get name, longitude and latitude of the submitted senseBoxId
 #'
 #' @param senseBoxId [character] (**required**): senseBoxId
+#' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores? At least 4 cores
+#' are necessary to use this feature.
+#'
 #' @return A [data.frame] with name, longtidue and latitude of the submitted senseBoxIds.
 #' This [data.frame] can directly be used in [leaflet::leaflet] to visualise the location of the senseBoxIds.
 #'
@@ -14,45 +17,27 @@
 #' @md
 #' @export
 get_senseBox_location <- function(
-  senseBoxId){
+  senseBoxId,
+  parallel = FALSE){
 
   ##=======================================##
   ## ERROR HANDLING
   ##=======================================##
 
-  if(missing(senseBoxId))
+  if (missing(senseBoxId))
     stop("[get_senseBox_location()] Argument 'senseBoxId' is missing", call. = FALSE)
 
-  if(class(unlist(senseBoxId)) != "character")
+  if (class(unlist(senseBoxId)) != "character")
     stop("[get_senseBox_location()] Argument 'senseBoxId' has to be a character", call. = FALSE)
 
+  if (class(parallel) != "logical")
+    stop("[get_senseBox_location()] Argument 'parallel' has to be logical", call. = FALSE)
+
   ## use get_senseBox_info() to get all neccessary information
-  info <- get_senseBox_info(senseBoxId)
+  info <- get_senseBox_info(senseBoxId, parallel = parallel)
 
-  ## extract longitude
-  long <- lapply(1:length(info), function(x){
+  df <- dplyr::select_(info, "name", "long", "lat")
 
-    info[[x]]$content$currentLocation$coordinates[1]
-  })
-
-  ## extract latitude
-  lat <- lapply(1:length(info), function(x){
-
-    info[[x]]$content$currentLocation$coordinates[2]
-  })
-
-  ## extract name of senseBox
-  name <- lapply(1:length(info), function(x){
-
-    info[[x]]$content$name
-  })
-
-  return(
-    data.frame(
-      name = unlist(name),
-      long = unlist(long),
-      lat = unlist(lat)
-    )
-  )
+  return(df)
 
 }

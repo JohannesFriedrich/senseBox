@@ -8,9 +8,12 @@ test_that("Check output length and class", {
 
   temp <- get_senseBox_sensor_Ids(Id)
 
-  expect_equal(class(temp), "list")
-  expect_equal(names(temp), Id)
+  expect_equal(class(temp), "data.frame")
+  expect_equal(names(temp), c("name", "phenomena", "sensorIds", "sensorType"))
   expect_equal(class(unlist(temp)), "character")
+
+  ## check arguemnt tidy = TRUE
+  temp <- get_senseBox_sensor_Ids(Id, tidy = TRUE)
 })
 
 test_that("Check parallel = TRUE", {
@@ -26,10 +29,10 @@ test_that("Check parallel = TRUE", {
   temp <- get_senseBox_sensor_Ids(rep(Id,2),
                           parallel = TRUE)
 
-  expect_length(temp, 2)
-  expect_type(temp, "list")
+  expect_equal(nrow(temp), 2)
+  expect_equal(ncol(temp), 4)
+  expect_equal(class(temp), "data.frame")
   expect_type(unlist(temp), "character")
-  expect_length(temp[[1]], 4)
 
 })
 
@@ -38,24 +41,5 @@ test_that("Check error handling", {
   # testthat::skip_on_travis()
 
   expect_error(get_senseBox_sensor_Ids("fail"), NULL)
-
-})
-
-test_that("Check multple input Ids", {
-  # testthat::skip_on_cran()
-  # testthat::skip_on_travis()
-
-  ## check parallel = TRUE (default) option with multiple Ids
-  Id <- "593acaa66ccf3b00116deb0f"
-
-  temp <- get_senseBox_sensor_Ids(rep(Id,3))
-
-  expect_equal(class(temp), "list")
-  expect_equal(names(temp), rep(Id,3))
-  expect_equal(class(unlist(temp)), "character")
-
-  expect_equal(class(temp), "list")
-  expect_equal(names(temp), rep(Id,3))
-  expect_equal(class(unlist(temp)), "character")
 
 })
