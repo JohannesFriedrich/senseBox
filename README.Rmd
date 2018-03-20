@@ -74,7 +74,7 @@ We chose one ID for the following examples
 senseBoxId <- "592ca4b851d3460011ea2635"
 ```
 
-Show location of senseBox
+#### Show location of senseBox
 
 ```{r plot_location}
 location <- get_senseBox_location(senseBoxId)
@@ -87,6 +87,8 @@ leaflet(location) %>%
   addTiles() %>%  
   addMarkers(~long, ~lat, popup = ~htmltools::htmlEscape(name))
 ```
+
+#### Sensor Id informations
 
 Get some information about the senseBox sensors
 
@@ -113,6 +115,8 @@ knitr::kable(
   format = "html"
 )
 ```
+
+#### Download senseBox data
 
 We can now download data from the senseBox, either from a specific sensorId or from all sensors within the sensBox.
 In the following we are downloading all available sensors.
@@ -159,3 +163,61 @@ ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
         legend.title = element_blank())
 
 ```
+
+
+### Some senseBox statistics
+
+```{r}
+infos <- get_senseBox_info(Id_list$senseBoxId, parallel = TRUE)
+```
+
+```{r, message=FALSE}
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
+infos %>% 
+  select(name, phenomena) %>%  
+  unnest() %>% 
+  count(phenomena) %>% 
+  arrange(desc(n)) %>% 
+  top_n(10, n) %>% 
+  ggplot() +
+  geom_histogram(aes(x = phenomena, y = n), stat = "identity")
+
+```
+
+```{r}
+infos %>% 
+  group_by(exposure, grouptag) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  na.omit() %>% 
+  top_n(5, n) %>% 
+  
+  ggplot() +
+  geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity")
+```
+
+```{r, message=FALSE}
+library(lubridate)
+```
+
+```{r}
+infos %>% 
+ mutate(year = year(createdAt),
+        month = month(createdAt),
+        day = day(createdAt)) %>% 
+  group_by(year, exposure) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(year)) %>% 
+  
+  ggplot() +
+  geom_bar(aes(x = year, y = n, fill = exposure), stat = "identity")
+```
+
+## Available senseBoxes
+
+[This site](http://rpubs.com/Johnsenfr/371797) offers a list of all available senseBoxes (20-03-2018).
+You can search for any keyword you are interested in.

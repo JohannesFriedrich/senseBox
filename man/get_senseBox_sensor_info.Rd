@@ -15,7 +15,7 @@ are necessary to use this feature.}
 \item{tidy}{\link{logical} (\strong{optional}): Should the output be a tidy data frame?}
 }
 \value{
-\link{list}
+A \link{data.frame} with coloumns "name", "phenomena", "unit", "sensorIds", "sensorType".
 }
 \description{
 Get info (Ids) from sensors of a senseBox

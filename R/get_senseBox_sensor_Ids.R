@@ -42,7 +42,7 @@ get_senseBox_sensor_Ids <- function(
   df <- dplyr::select_(info, "name", "phenomena", "sensorIds", "sensorType")
 
   if (tidy)
-    df <- tidyr::unnest_(df, c("sensorIds", "phenomena", "sensorType"))
+    df <- tidyr::unnest_(df)
 
   return(df)
 

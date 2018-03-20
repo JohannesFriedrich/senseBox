@@ -4,16 +4,18 @@
 \alias{get_senseBox_info}
 \title{Get info about one senseBox}
 \usage{
-get_senseBox_info(senseBoxId, parallel = FALSE)
+get_senseBox_info(senseBoxId, parallel = FALSE, tidy = FALSE)
 }
 \arguments{
-\item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}
+\item{senseBoxId}{\link{character} or \link{vector} of \link{character} (\strong{required}): senseBoxId}
 
 \item{parallel}{\link{logical} (\strong{optional}): Should the calculations be executed on multiple cores?
 At least 4 cores are necessary to activate this feature.}
+
+\item{tidy}{\link{logical} (\strong{optional}): Should the output be a tidy data frame?}
 }
 \value{
-\link{list}
+A \link{data.frame}
 }
 \description{
 Get info about one senseBox

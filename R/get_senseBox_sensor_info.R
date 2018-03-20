@@ -4,7 +4,7 @@
 #' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores? At least 4 cores
 #' are necessary to use this feature.
 #' @param tidy [logical] (**optional**): Should the output be a tidy data frame?
-#' @return [list]
+#' @return A [data.frame] with coloumns "name", "phenomena", "unit", "sensorIds", "sensorType".
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich

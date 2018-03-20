@@ -1,9 +1,10 @@
 #' Get info about one senseBox
 #'
-#' @param senseBoxId [character] (**required**): senseBoxId
+#' @param senseBoxId [character] or [vector] of [character] (**required**): senseBoxId
 #' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores?
 #' At least 4 cores are necessary to activate this feature.
-#' @return [list]
+#' @param tidy [logical] (**optional**): Should the output be a tidy data frame?
+#' @return A [data.frame]
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich
@@ -20,7 +21,8 @@
 #' @export
 get_senseBox_info <- function(
   senseBoxId,
-  parallel = FALSE){
+  parallel = FALSE,
+  tidy = FALSE){
 
   ##=======================================##
   ## ERROR HANDLING
@@ -58,6 +60,9 @@ get_senseBox_info <- function(
   parsed_list <- lapply(parsed, parse_senseBoxData)
 
   df_parsed <- dplyr::bind_rows(parsed_list)
+
+  if (tidy)
+    df_parsed <- tidyr::unnest_(df_parsed)
 
   return(df_parsed)
 }

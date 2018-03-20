@@ -38,7 +38,7 @@ value
 Number of senseBoxes
 </td>
 <td style="text-align:right;">
-1444
+1488
 </td>
 </tr>
 <tr>
@@ -46,7 +46,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-685538525
+707509997
 </td>
 </tr>
 <tr>
@@ -54,7 +54,7 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-1881
+2142
 </td>
 </tr>
 </tbody>
@@ -357,7 +357,7 @@ We chose one ID for the following examples
 senseBoxId <- "592ca4b851d3460011ea2635"
 ```
 
-Show location of senseBox
+#### Show location of senseBox
 
 ``` r
 location <- get_senseBox_location(senseBoxId)
@@ -372,6 +372,8 @@ leaflet(location) %>%
 ```
 
 <img src="README_figs/README-plot_location-1.png" width="672" />
+
+#### Sensor Id informations
 
 Get some information about the senseBox sensors
 
@@ -516,6 +518,8 @@ DHT22
 </tr>
 </tbody>
 </table>
+#### Download senseBox data
+
 We can now download data from the senseBox, either from a specific sensorId or from all sensors within the sensBox. In the following we are downloading all available sensors.
 
 ``` r
@@ -558,3 +562,66 @@ ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
 ```
 
 <img src="README_figs/README-unnamed-chunk-10-1.png" width="672" />
+
+### Some senseBox statistics
+
+``` r
+infos <- get_senseBox_info(Id_list$senseBoxId, parallel = TRUE)
+```
+
+``` r
+library(dplyr)
+library(tidyr)
+```
+
+``` r
+infos %>% 
+  select(name, phenomena) %>%  
+  unnest() %>% 
+  count(phenomena) %>% 
+  arrange(desc(n)) %>% 
+  top_n(10, n) %>% 
+  ggplot() +
+  geom_histogram(aes(x = phenomena, y = n), stat = "identity")
+## Warning: Ignoring unknown parameters: binwidth, bins, pad
+```
+
+<img src="README_figs/README-unnamed-chunk-13-1.png" width="672" />
+
+``` r
+infos %>% 
+  group_by(exposure, grouptag) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  na.omit() %>% 
+  top_n(5, n) %>% 
+  
+  ggplot() +
+  geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity")
+```
+
+<img src="README_figs/README-unnamed-chunk-14-1.png" width="672" />
+
+``` r
+library(lubridate)
+```
+
+``` r
+infos %>% 
+ mutate(year = year(createdAt),
+        month = month(createdAt),
+        day = day(createdAt)) %>% 
+  group_by(year, exposure) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(year)) %>% 
+  
+  ggplot() +
+  geom_bar(aes(x = year, y = n, fill = exposure), stat = "identity")
+```
+
+<img src="README_figs/README-unnamed-chunk-16-1.png" width="672" />
+
+Available senseBoxes
+--------------------
+
+[This site](http://rpubs.com/Johnsenfr/371797) offers a list of all available senseBoxes (20-03-2018). You can search for any keyword you are interested in.
