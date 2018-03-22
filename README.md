@@ -38,7 +38,7 @@ value
 Number of senseBoxes
 </td>
 <td style="text-align:right;">
-1488
+1498
 </td>
 </tr>
 <tr>
@@ -46,7 +46,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-707509997
+712689867
 </td>
 </tr>
 <tr>
@@ -54,7 +54,7 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-2142
+2188
 </td>
 </tr>
 </tbody>
@@ -582,7 +582,8 @@ infos %>%
   arrange(desc(n)) %>% 
   top_n(10, n) %>% 
   ggplot() +
-  geom_histogram(aes(x = phenomena, y = n), stat = "identity")
+  geom_histogram(aes(x = phenomena, y = n), stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ## Warning: Ignoring unknown parameters: binwidth, bins, pad
 ```
 
@@ -597,7 +598,8 @@ infos %>%
   top_n(5, n) %>% 
   
   ggplot() +
-  geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity")
+  geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 <img src="README_figs/README-unnamed-chunk-14-1.png" width="672" />

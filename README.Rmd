@@ -184,7 +184,8 @@ infos %>%
   arrange(desc(n)) %>% 
   top_n(10, n) %>% 
   ggplot() +
-  geom_histogram(aes(x = phenomena, y = n), stat = "identity")
+  geom_histogram(aes(x = phenomena, y = n), stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
 
@@ -197,7 +198,8 @@ infos %>%
   top_n(5, n) %>% 
   
   ggplot() +
-  geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity")
+  geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 ```{r, message=FALSE}
