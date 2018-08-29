@@ -5,7 +5,8 @@
 \title{Search senseBoxes with special phenomenas, dates, exposures, ...}
 \usage{
 search_senseBox(phenomenon = NA, exposure = NA, model = NA,
-  grouptag = NA, date = NA, fromDate = NA, toDate = NA, tidy = FALSE)
+  grouptag = NA, date = NA, fromDate = NA, toDate = NA,
+  tidy = FALSE)
 }
 \arguments{
 \item{phenomenon}{[character] (**optional**): Which phenomenon do you want to search for?}

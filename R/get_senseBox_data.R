@@ -6,7 +6,8 @@
 #' It is possible to download the data directly as a csv file, when argument `CSV` is `TRUE`.
 #'
 #' @param senseBoxId [character]or [vector] of [character] (**required**): senseBoxId or a [vector] of [character] of senseBoxIds
-#' @param sensorId [character] or [list] of [character] (**required**): sensorId or a [list] of senseBoxIds
+#' @param sensorId [character] or [list] of [character] (**optional**): sensorId or a [list] of senseBoxIds. When no sensorIds are
+#' submitted, all sensorIds from this sensebox are requested.
 #' @param fromDate [character] (**optional**): Just show data with from date in format YYYY-mm-dd HH:MM:SS
 #' @param toDate [character] (**optional**): Just show data with up to date in format YYYY-mm-dd HH:MM:SS
 #' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores? At least 4 cores

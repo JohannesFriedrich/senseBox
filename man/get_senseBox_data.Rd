@@ -11,7 +11,8 @@ get_senseBox_data(senseBoxId, sensorId = rep("all", times =
 \arguments{
 \item{senseBoxId}{\link{character}or \link{vector} of \link{character} (\strong{required}): senseBoxId or a \link{vector} of \link{character} of senseBoxIds}
 
-\item{sensorId}{\link{character} or \link{list} of \link{character} (\strong{required}): sensorId or a \link{list} of senseBoxIds}
+\item{sensorId}{\link{character} or \link{list} of \link{character} (\strong{optional}): sensorId or a \link{list} of senseBoxIds. When no sensorIds are
+submitted, all sensorIds from this sensebox are requested.}
 
 \item{fromDate}{\link{character} (\strong{optional}): Just show data with from date in format YYYY-mm-dd HH:MM:SS}
 
