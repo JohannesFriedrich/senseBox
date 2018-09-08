@@ -168,11 +168,11 @@ ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
 
 #### Download archived data
 
-Receiving data with **get_senseBox_data()** is limited to 10.000 data points. But every day all measured sensor data are stored in the senseBox archive. With the function **get_senseBox_archive()**  the zip file from a specific senseBox for a date can be downloaded. You have to unzip the folder by yourself and every sensor data is stored in a csv file.
+Receiving data with `get_senseBox_data()` is limited to 10.000 data points. But every day all measured sensor data are stored in the senseBox archive. With the function `get_senseBox_archive()`  the zip file from a specific senseBox for a date can be downloaded. You have to unzip the folder by yourself and every sensor data is stored in a csv file.
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE}
 get_senseBox_archive(senseBoxId,
-                     "2018-07-31")
+                    date = "2018-07-31")
 ```
 
 
@@ -234,5 +234,5 @@ infos %>%
 
 ## Available senseBoxes
 
-[This site](http://rpubs.com/Johnsenfr/371797) offers a list of all available senseBoxes (20-03-2018).
+[This site](http://rpubs.com/Johnsenfr/414119) offers a list of all available senseBoxes (28-08-2018).
 You can search for any keyword you are interested in.

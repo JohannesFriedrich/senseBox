@@ -37,6 +37,9 @@ get_senseBox_sensor_info <- function(
   if (class(parallel) != "logical")
     stop("[get_senseBox_sensor_info()] Argument 'parallel' has to be logical", call. = FALSE)
 
+  if (class(tidy) != "logical")
+    stop("[get_senseBox_sensor_info()] Argument 'tidy' has to be logical", call. = FALSE)
+
   ## use get_senseBox_info() to get all neccessary information
   info <- get_senseBox_info(senseBoxId, parallel = parallel)
 

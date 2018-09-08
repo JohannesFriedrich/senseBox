@@ -10,6 +10,7 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' ##=====================================
 #' ## Example: download senseBox archive
 #' ##=====================================
@@ -20,6 +21,7 @@
 #'
 #' get_senseBox_archive(
 #'   senseBoxId = "5957b67494f0520011304cc1")
+#' }
 #'
 #' @md
 #' @export

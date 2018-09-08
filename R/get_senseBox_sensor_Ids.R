@@ -37,6 +37,9 @@ get_senseBox_sensor_Ids <- function(
   if (class(parallel) != "logical")
     stop("[get_senseBox_sensor_Ids()] Argument 'parallel' has to be logical", call. = FALSE)
 
+  if (class(tidy) != "logical")
+    stop("[get_senseBox_sensor_Ids()] Argument 'tidy' has to be logical", call. = FALSE)
+
   ## use get_senseBox_info() to get all neccessary information
   info <- get_senseBox_info(senseBoxId, parallel = parallel)
   df <- dplyr::select_(info, "name", "phenomena", "sensorIds", "sensorType")

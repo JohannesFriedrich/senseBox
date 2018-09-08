@@ -12,7 +12,7 @@
 #' @examples
 #'
 #' ##=====================================
-#' ## Example: get data from one sensBox
+#' ## Example: get data from one senseBox
 #' ##=====================================
 #'
 #' get_senseBox_info("593acaa66ccf3b00116deb0f")
@@ -33,6 +33,14 @@ get_senseBox_info <- function(
 
   if (class(unlist(senseBoxId)) != "character")
     stop("[get_one_senseBox_info()] Argument 'senseBoxId' has to be a character", call. = FALSE)
+
+  if (class(parallel) != "logical")
+    stop("[get_senseBox_info()] Argument 'parallel' has to be logical", call. = FALSE)
+
+  if (class(tidy) != "logical")
+    stop("[get_senseBox_info()] Argument 'parallel' has to be logical", call. = FALSE)
+
+  ########
 
   if (parallel) {
     if (parallel::detectCores() <= 2) {

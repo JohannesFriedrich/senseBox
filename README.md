@@ -80,7 +80,7 @@ Number of Measurements
 
 <td style="text-align:right;">
 
-1308586099
+1309361360
 
 </td>
 
@@ -96,7 +96,7 @@ Number of measurements in last minute
 
 <td style="text-align:right;">
 
-2669
+2733
 
 </td>
 
@@ -1047,12 +1047,17 @@ ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
 
 #### Download archived data
 
-Receiving data with **get\_senseBox\_data()** is limited to 10.000 data
+Receiving data with `get_senseBox_data()` is limited to 10.000 data
 points. But every day all measured sensor data are stored in the
-senseBox archive. With the function **get\_senseBox\_archive()** the zip
+senseBox archive. With the function `get_senseBox_archive()` the zip
 file from a specific senseBox for a date can be downloaded. You have to
 unzip the folder by yourself and every sensor data is stored in a csv
 file.
+
+``` r
+get_senseBox_archive(senseBoxId,
+                    date = "2018-07-31")
+```
 
 ### Some senseBox statistics
 
@@ -1116,6 +1121,6 @@ infos %>%
 
 ## Available senseBoxes
 
-[This site](http://rpubs.com/Johnsenfr/371797) offers a list of all
-available senseBoxes (20-03-2018). You can search for any keyword you
+[This site](http://rpubs.com/Johnsenfr/414119) offers a list of all
+available senseBoxes (28-08-2018). You can search for any keyword you
 are interested in.

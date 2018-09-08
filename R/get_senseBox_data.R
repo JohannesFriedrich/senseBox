@@ -1,4 +1,4 @@
-#' Get data from a senseBox
+#' Get measurement data from a senseBox
 #'
 #' If the arguments `fromDate` and `toDate` are NOT given, the measurements from the last 48 h from
 #' now are downloaded. The maximum numbers of downloaded measurements are 10,000.
@@ -27,7 +27,9 @@
 #'
 #' get_senseBox_data(
 #'   senseBoxId = "5957b67494f0520011304cc1",
-#'   sensorId = "5957b67494f0520011304cc4")
+#'   sensorId = "5957b67494f0520011304cc4",
+#'   fromDate = "2017-11-25-12:00:00",
+#'   toDate = "2017-11-25 12:30:00")
 #'
 #'\dontrun{
 #' get_senseBox_data(
@@ -66,6 +68,15 @@ get_senseBox_data <- function(
 
   if (class(unlist(sensorId)) != "character")
     stop("[get_senseBox_data()] Argument 'sensorId' has to be a character", call. = FALSE)
+
+  if (class(parallel) != "logical")
+    stop("[get_senseBox_data()] Argument 'parallel' has to be logical", call. = FALSE)
+
+  if (class(CSV) != "logical")
+    stop("[get_senseBox_data()] Argument 'CSV' has to be logical", call. = FALSE)
+
+  if (class(POSIXct) != "logical")
+    stop("[get_senseBox_data()] Argument 'POSIXct' has to be logical", call. = FALSE)
 
   ##==== END ERROR HANDLING
 
