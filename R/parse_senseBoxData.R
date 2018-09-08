@@ -1,10 +1,10 @@
 #' Construct a senseBox data.frame
 #'
-#' Parses the fields of a \code{/boxes} response from the openSenseMap API
+#' Parses the fields of a \code{/boxes} response from the openSenseMap API.
 #' The code was originally developed by Norwin Roosen (https://github.com/noerw/opensensmapR)
 #'
 #' @author Norwin Roosen, University of Muenster (Germany),
-#' Johannes Friedrich, University of Bayreuth (Germany)
+#' Johannes Friedrich
 #'
 #' @param boxdata A named \code{list} containing the data from a senseBox
 #' @return A \code{data.frame}

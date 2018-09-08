@@ -133,7 +133,7 @@ value
 Number of senseBoxes
 </td>
 <td style="text-align:right;">
-2254
+2255
 </td>
 </tr>
 <tr>
@@ -141,7 +141,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-1309458186
+1309832803
 </td>
 </tr>
 <tr>
@@ -149,7 +149,7 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-2832
+2381
 </td>
 </tr>
 </tbody>
@@ -164,8 +164,8 @@ Number of measurements in last minute
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/addProviderTiles">addProviderTiles</a></span>(providers<span class="op">$</span>OpenStreetMap) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addTiles</a></span>() <span class="op">%&gt;%</span><span class="st">  </span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/leaflet/topics/map-layers">addMarkers</a></span>(<span class="op">~</span>long, <span class="op">~</span>lat, <span class="dt">popup =</span> <span class="op">~</span>htmltools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/htmltools/topics/htmlEscape">htmlEscape</a></span>(name))</a></code></pre></div>
-<div id="htmlwidget-6be08bfcc94d538c84b9" style="width:480px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6be08bfcc94d538c84b9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>But now to the main part of the package: downloading and analysing data from senseBoxes.</p>
+<div id="htmlwidget-d3dd0400e674243dbe8b" style="width:480px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d3dd0400e674243dbe8b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script><p>But now to the main part of the package: downloading and analysing data from senseBoxes.</p>
 <ul>
 <li>Get sensor Ids from a senseBox</li>
 <li>Show some information about the sensor</li>

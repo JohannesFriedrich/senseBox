@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_senseBox_data.R
 \name{get_senseBox_data}
 \alias{get_senseBox_data}
-\title{Get data from a senseBox}
+\title{Get measurement data from a senseBox}
 \usage{
 get_senseBox_data(senseBoxId, sensorId = rep("all", times =
   length(unlist(senseBoxId))), fromDate = NULL, toDate = NULL,
