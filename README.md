@@ -64,7 +64,7 @@ Number of senseBoxes
 
 <td style="text-align:right;">
 
-2246
+2254
 
 </td>
 
@@ -80,7 +80,7 @@ Number of Measurements
 
 <td style="text-align:right;">
 
-1301900739
+1308586099
 
 </td>
 
@@ -96,7 +96,7 @@ Number of measurements in last minute
 
 <td style="text-align:right;">
 
-2691
+2669
 
 </td>
 
@@ -707,18 +707,9 @@ leaflet(location) %>%
   addProviderTiles(providers$OpenStreetMap) %>% 
   addTiles() %>%  
   addMarkers(~long, ~lat, popup = ~htmltools::htmlEscape(name))
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 ```
 
-<!--html_preserve-->
-
-<div id="htmlwidget-cc14374d3e22835e0604" class="leaflet html-widget" style="width:672px;height:480px;">
-
-</div>
-
-<script type="application/json" data-for="htmlwidget-cc14374d3e22835e0604">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script>
-
-<!--/html_preserve-->
+<img src="README_figs/README-plot_location-1.png" width="672" />
 
 #### Sensor Id informations
 
