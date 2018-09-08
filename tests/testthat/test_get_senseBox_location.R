@@ -17,6 +17,10 @@ test_that("Check error handling", {
   # testthat::skip_on_cran()
   # testthat::skip_on_travis()
 
-  expect_error(get_senseBox_location("fail"), NULL)
+  Id <- "593acaa66ccf3b00116deb0f"
+
+  expect_error(get_senseBox_location())
+  expect_error(get_senseBox_location(1))
+  expect_error(get_senseBox_location(Id, 1))
 
 })

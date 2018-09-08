@@ -40,6 +40,11 @@ test_that("Check error handling", {
   # testthat::skip_on_cran()
   # testthat::skip_on_travis()
 
-  expect_error(get_senseBox_sensor_Ids("fail"), NULL)
+  Id <- "593acaa66ccf3b00116deb0f"
+
+  expect_error(get_senseBox_sensor_Ids())
+  expect_error(get_senseBox_sensor_Ids(1))
+  expect_error(get_senseBox_sensor_Ids(Id, 1))
+  expect_error(get_senseBox_sensor_Ids(Id, tidy  = 1))
 
 })

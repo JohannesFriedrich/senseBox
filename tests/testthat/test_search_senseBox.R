@@ -10,9 +10,13 @@ test_that("Check output length and class", {
   expect_equal(nrow(temp), 2)
   expect_equal(class(temp), "data.frame")
 
-  indor_date <- search_senseBox(exposure = "indoor",
+  indoor_date <- search_senseBox(exposure = "indoor",
                   fromDate = "2018-01-01 00:00:00",
                   toDate = "2018-01-01 01:00:00")
+
+  ## test model = ..., tidy = TRUE and grouptag = ... argument
+  temp <-  search_senseBox(grouptag = "ifgi", tidy = TRUE, model = "homeEthernet")
+
 })
 
 test_that("Check error handling", {
@@ -23,5 +27,7 @@ test_that("Check error handling", {
                                fromDate = "2018-01-01 00:00:00"))
 
   expect_error(search_senseBox(fromDate = "2018-01-01 00:00:00"))
+
+  expect_error(search_senseBox(phenomenon = "Helligkeit"))
 
 })

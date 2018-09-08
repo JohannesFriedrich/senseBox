@@ -53,7 +53,31 @@ test_that("Check error handling", {
   # testthat::skip_on_cran()
   # testthat::skip_on_travis()
 
-  expect_error(get_senseBox_data("fail"), NULL)
+  Id <- "5957b67494f0520011304cc1"
+
+  ## check missing ID
+  expect_error(get_senseBox_data())
+
+  ## check wrong senseBoxID class
+  expect_error(get_senseBox_data(1))
+
+  ## check wrong sensorId class
+  expect_error(get_senseBox_data(
+    senseBoxId = Id,1))
+
+  ## check wrong parallel class
+  expect_error(get_senseBox_data(
+    senseBoxId = Id, parallel = "1"))
+
+  ## check wrong CSV class
+  expect_error(get_senseBox_data(
+    senseBoxId = Id, CSV = "1"))
+
+  ## check wrong POSIXct class
+  expect_error(get_senseBox_data(
+    senseBoxId = Id, POSIXct = "1"))
+
+
 
   expect_error(get_senseBox_data(
     senseBoxId = "5957b67494f0520011304cc1",

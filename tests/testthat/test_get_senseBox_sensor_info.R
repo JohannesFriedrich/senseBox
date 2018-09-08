@@ -1,8 +1,8 @@
 context("Test get_senseBox_sensor_info()")
 
 test_that("Check output length and class", {
-  testthat::skip_on_cran()
-  testthat::skip_on_travis()
+  # testthat::skip_on_cran()
+  # testthat::skip_on_travis()
 
   Id <- "593acaa66ccf3b00116deb0f"
 
@@ -17,7 +17,12 @@ test_that("Check error handling", {
   # testthat::skip_on_cran()
   # testthat::skip_on_travis()
 
-  expect_error(get_senseBox_sensor_info("fail"), NULL)
+  Id <- "593acaa66ccf3b00116deb0f"
+
+  expect_error(get_senseBox_sensor_info())
+  expect_error(get_senseBox_sensor_info(1))
+  expect_error(get_senseBox_sensor_info(Id, 1))
+  expect_error(get_senseBox_sensor_info(Id, tidy  = 1))
 
 })
 
