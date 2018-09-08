@@ -64,7 +64,7 @@ Number of senseBoxes
 
 <td style="text-align:right;">
 
-2254
+2255
 
 </td>
 
@@ -80,7 +80,7 @@ Number of Measurements
 
 <td style="text-align:right;">
 
-1309361360
+1309879647
 
 </td>
 
@@ -96,7 +96,7 @@ Number of measurements in last minute
 
 <td style="text-align:right;">
 
-2733
+2788
 
 </td>
 

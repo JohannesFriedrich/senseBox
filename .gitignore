@@ -1,6 +1,7 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+*.Rproj.user
+*.Rhistory
+*.RData
+*.Ruserdata
+*.DS_Store
 Auswertungen
 rsconnect
