@@ -18,13 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Get info about one senseBox — get_senseBox_info" />
+
+<meta property="og:description" content="Get info about one senseBox" />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -34,16 +46,14 @@
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-84499524-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-84499524-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-84499524-2');
 </script>
 
   </head>
@@ -59,8 +69,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">senseBox</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">senseBox</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -97,6 +111,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -104,35 +119,43 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get info about one senseBox</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JohannesFriedrich/senseBox/blob/master/R/get_senseBox_info.R'><code>R/get_senseBox_info.R</code></a></small>
+    <div class="hidden name"><code>get_senseBox_info.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Get info about one senseBox</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>get_senseBox_info</span>(<span class='no'>senseBoxId</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_senseBox_info</span>(<span class='no'>senseBoxId</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tidy</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>senseBoxId</th>
-      <td><p>character (<strong>required</strong>): senseBoxId</p></td>
+      <td><p>character or vector of character (<strong>required</strong>): senseBoxId</p></td>
     </tr>
     <tr>
       <th>parallel</th>
-      <td><p>logical (<strong>optional</strong>): Should the calculations be executed on multiple cores? At least 4 cores
-are necessary to activate this feature.</p></td>
+      <td><p>logical (<strong>optional</strong>): Should the calculations be executed on multiple cores?
+At least 4 cores are necessary to activate this feature.</p></td>
+    </tr>
+    <tr>
+      <th>tidy</th>
+      <td><p>logical (<strong>optional</strong>): Should the output be a tidy data frame?</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>A data.frame</p>
     
     <h2 class="hasAnchor" id="function-version"><a class="anchor" href="#function-version"></a>Function version</h2>
 
@@ -142,70 +165,21 @@ are necessary to activate this feature.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>##=====================================</span>
-<span class='co'>## Example: get data from one sensBox</span>
+<span class='co'>## Example: get data from one senseBox</span>
 <span class='co'>##=====================================</span>
 
-<span class='fu'>get_senseBox_info</span>(<span class='st'>"593acaa66ccf3b00116deb0f"</span>)</div><div class='output co'>#&gt; $`593acaa66ccf3b00116deb0f`
-#&gt; $`593acaa66ccf3b00116deb0f`$content
-#&gt; $`593acaa66ccf3b00116deb0f`$content$`_id`
-#&gt; [1] "593acaa66ccf3b00116deb0f"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$createdAt
-#&gt; [1] "2017-06-09T16:19:50.930Z"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$updatedAt
-#&gt; [1] "2017-12-21T10:46:15.255Z"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$name
-#&gt; [1] "Kant-Gymnasium Boppard 1"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$grouptag
-#&gt; [1] "kgb"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$exposure
-#&gt; [1] "indoor"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$model
-#&gt; [1] "custom"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$sensors
-#&gt;                       icon            title   unit sensorType
-#&gt; 1 osem-temperature-celsius       Temperatur     °C    HDC100X
-#&gt; 2            osem-humidity Luftfeuchtigkeit      %    HDC100X
-#&gt; 3           osem-barometer        Luftdruck    hpa     BMP280
-#&gt; 4          osem-brightness     UV-Strahlung µW/cm²   VEML6070
-#&gt;                        _id lastMeasurement.value lastMeasurement.createdAt
-#&gt; 1 593acaa66ccf3b00116deb10                  22.3  2017-12-21T10:46:13.822Z
-#&gt; 2 593acaa66ccf3b00116deb11                  46.5  2017-12-21T10:46:14.296Z
-#&gt; 3 594a1922a4ad59001148069c                   780  2017-12-21T10:46:14.772Z
-#&gt; 4 594a1a8da4ad5900114816a0                     0  2017-12-21T10:46:15.251Z
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$description
-#&gt; [1] "Die Sensebox misst das \"Klima\" in einem Nebenraum des Kant-Gymnasiums, bis ein geeigneter Standort außerhalb des Gebäudes eingerichtet ist.\nDer Luftdrucksensor ist noch nicht richtig kallibriert."
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$image
-#&gt; [1] "593acaa66ccf3b00116deb0f.jpg?1498222106935"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$currentLocation
-#&gt; $`593acaa66ccf3b00116deb0f`$content$currentLocation$coordinates
-#&gt; [1]  7.601292 50.230871
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$currentLocation$type
-#&gt; [1] "Point"
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$currentLocation$timestamp
-#&gt; [1] "2017-06-09T16:19:50.000Z"
-#&gt; 
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$content$loc
-#&gt;   geometry.coordinates geometry.type       geometry.timestamp    type
-#&gt; 1  7.601292, 50.230871         Point 2017-06-09T16:19:50.000Z Feature
-#&gt; 
-#&gt; 
-#&gt; $`593acaa66ccf3b00116deb0f`$senseBoxId
-#&gt; [1] "593acaa66ccf3b00116deb0f"
-#&gt; 
-#&gt; </div><div class='input'>
+<span class='fu'>get_senseBox_info</span>(<span class='st'>"593acaa66ccf3b00116deb0f"</span>)</div><div class='output co'>#&gt;                       X_id           createdAt           updatedAt
+#&gt; 1 593acaa66ccf3b00116deb0f 2017-06-09 16:19:50 2018-01-30 22:46:09
+#&gt;                       name grouptag exposure  model
+#&gt; 1 Kant-Gymnasium Boppard 1      kgb   indoor custom
+#&gt;                                                                                                                                                                                            description
+#&gt; 1 Die Sensebox misst das "Klima" in einem Nebenraum des Kant-Gymnasiums, bis ein geeigneter Standort außerhalb des Gebäudes eingerichtet ist.\nDer Luftdrucksensor ist noch nicht richtig kallibriert.
+#&gt;                                               phenomena               unit
+#&gt; 1 Temperatur, Luftfeuchtigkeit, Luftdruck, UV-Strahlung °C, %, hpa, µW/cm²
+#&gt;                                                                                                sensorIds
+#&gt; 1 593acaa66ccf3b00116deb10, 593acaa66ccf3b00116deb11, 594a1922a4ad59001148069c, 594a1a8da4ad5900114816a0
+#&gt;                           sensorType     lastMeasurement     long      lat
+#&gt; 1 HDC100X, HDC100X, BMP280, VEML6070 2018-01-30 22:46:07 7.601292 50.23087</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -233,11 +207,14 @@ Johannes Friedrich
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

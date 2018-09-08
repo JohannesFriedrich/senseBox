@@ -27,7 +27,7 @@ Get info about one senseBox
 \examples{
 
 ##=====================================
-## Example: get data from one sensBox
+## Example: get data from one senseBox
 ##=====================================
 
 get_senseBox_info("593acaa66ccf3b00116deb0f")

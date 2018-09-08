@@ -24,6 +24,7 @@ Get archived data from a senseBox
 
 \examples{
 
+\dontrun{
 ##=====================================
 ## Example: download senseBox archive
 ##=====================================
@@ -34,6 +35,7 @@ get_senseBox_archive(
 
 get_senseBox_archive(
   senseBoxId = "5957b67494f0520011304cc1")
+}
 
 }
 \author{

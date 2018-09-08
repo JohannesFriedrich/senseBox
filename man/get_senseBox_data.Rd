@@ -46,7 +46,9 @@ It is possible to download the data directly as a csv file, when argument \code{
 
 get_senseBox_data(
   senseBoxId = "5957b67494f0520011304cc1",
-  sensorId = "5957b67494f0520011304cc4")
+  sensorId = "5957b67494f0520011304cc4",
+  fromDate = "2017-11-25-12:00:00",
+  toDate = "2017-11-25 12:30:00")
 
 \dontrun{
 get_senseBox_data(
