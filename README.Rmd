@@ -1,5 +1,6 @@
 ---
 output: rmarkdown::github_document
+always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -165,6 +166,17 @@ ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
 ```
 
 
+#### Download archived data
+
+Receiving data with **get_senseBox_data()** is limited to 10.000 data points. But every day all measured sensor data are stored in the senseBox archive. With the function **get_senseBox_archive()**  the zip file from a specific senseBox for a date can be downloaded. You have to unzip the folder by yourself and every sensor data is stored in a csv file.
+
+```{r eval=FALSE, include=FALSE}
+get_senseBox_archive(senseBoxId,
+                     "2018-07-31")
+```
+
+
+
 ### Some senseBox statistics
 
 ```{r}
@@ -218,6 +230,7 @@ infos %>%
   ggplot() +
   geom_bar(aes(x = year, y = n, fill = exposure), stat = "identity")
 ```
+
 
 ## Available senseBoxes
 

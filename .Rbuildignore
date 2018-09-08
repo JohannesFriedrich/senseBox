@@ -1,6 +1,11 @@
 # Exclude RStudio files
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^.*\.Rmd$
+^.*\.R$
+^.*\.gif$
+^.*\.zip$
+^.*\.Rds$
 
 # Exclude test suite files
 ^\.travis\.yml$
