@@ -13,10 +13,10 @@ parse_senseBoxData(boxdata)
 A \code{data.frame}
 }
 \description{
-Parses the fields of a \code{/boxes} response from the openSenseMap API
+Parses the fields of a \code{/boxes} response from the openSenseMap API.
 The code was originally developed by Norwin Roosen (https://github.com/noerw/opensensmapR)
 }
 \author{
 Norwin Roosen, University of Muenster (Germany),
-Johannes Friedrich, University of Bayreuth (Germany)
+Johannes Friedrich
 }

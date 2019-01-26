@@ -16,7 +16,7 @@
 #' @param toDate [character] (**optional**): Just show data with up to date in format YYYY-mm-dd HH:MM:SS
 #' @param tidy [logical] (**optional**): Should the output be a tidy data frame?
 #'
-#' @return A [data.frame] with every entry is a sensBoxId.
+#' @return A [data.frame] with every entry is a senseBoxId.
 #'
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich
@@ -30,7 +30,7 @@
 #'
 #' ifgi_outdoor <- search_senseBox(grouptag = 'ifgi', exposure = 'outdoor')
 #'
-#'
+#' @md
 #' @export
 search_senseBox <- function(
   phenomenon = NA,

@@ -2,7 +2,8 @@
 % Please edit documentation in R/get_senseBox_info.R
 \name{get_senseBox_info}
 \alias{get_senseBox_info}
-\title{Get info about one senseBox}
+\title{Get info about one senseBox.
+You will receive information about a senseBox, e.g., the different sensors.}
 \usage{
 get_senseBox_info(senseBoxId, parallel = FALSE, tidy = FALSE)
 }
@@ -18,7 +19,8 @@ At least 4 cores are necessary to activate this feature.}
 A \link{data.frame}
 }
 \description{
-Get info about one senseBox
+Get info about one senseBox.
+You will receive information about a senseBox, e.g., the different sensors.
 }
 \section{Function version}{
  0.0.1

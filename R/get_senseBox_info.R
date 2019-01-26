@@ -1,4 +1,5 @@
-#' Get info about one senseBox
+#' Get info about one senseBox.
+#' You will receive information about a senseBox, e.g., the different sensors.
 #'
 #' @param senseBoxId [character] or [vector] of [character] (**required**): senseBoxId
 #' @param parallel [logical] (**optional**): Should the calculations be executed on multiple cores?

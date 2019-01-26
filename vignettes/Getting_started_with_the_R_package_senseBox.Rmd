@@ -31,18 +31,16 @@ This is the point where this **R**-pacakge comes into play: The **R**-package se
 With pacakges like `ggplot2` or `plotly` **R** is the perfect tool to visualise data.
 In the next chapter you find a short introduction to the basic usage of this **R**-package and some examples how to visualise the data.
 
-# Usage
+### Usage
 
-First we show a little bit of senseBox statistics with the function `get_senseBox_stats()`. Then we list all available senseBoxes with their Id and name. We choose an Id from a senseBox which is located in Berlin, Germany.
+Get some information about the senseBox project and list all senseBoxIds
 
-```{r}
+```{r get_senseBox_stats}
 library(senseBox)
 
 stats <- get_senseBox_stats()
-
-list <- get_senseBox_Ids()
-senseBoxId <- c("592ca4b851d3460011ea2635")
 ```
+
 
 ```{r, echo = FALSE}
 knitr::kable(
@@ -50,12 +48,41 @@ knitr::kable(
 )
 ```
 
+With the function `get_senseBox_Ids()` you obtain all available senseBox Ids and the name of the staion.
 
-See where is the box located? We can easily get an overview and map the location. 
-First we extract the coordinates of the senseBox. This can be done with `get_senseBox_location()`.
-Note that some extra packages are necessary to display the locations interactively.
+```{r}
+Id_list <- get_senseBox_Ids()
+```
 
-```{r, fig.height=5, fig.width=5}
+```{r echo = FALSE}
+knitr::kable(
+  head(Id_list),
+  format = "html")
+```
+
+You are just interested in senseBoxes, which collect data from "indoor"? So use the function `search_senseBox()`.
+
+```{r}
+indoor <- search_senseBox(exposure =  "indoor")
+```
+
+```{r echo = FALSE}
+knitr::kable(
+  head(indoor, 3),
+  format = "html")
+
+```
+
+
+We chose one ID for the following examples
+
+```{r set senseBoxId}
+senseBoxId <- "592ca4b851d3460011ea2635"
+```
+
+#### Show location of senseBox
+
+```{r plot_location}
 location <- get_senseBox_location(senseBoxId)
 
 library(leaflet)
@@ -67,23 +94,35 @@ leaflet(location) %>%
   addMarkers(~long, ~lat, popup = ~htmltools::htmlEscape(name))
 ```
 
-But now to the main part of the package: downloading and analysing data from senseBoxes.
+#### Sensor Id information
 
-* Get sensor Ids from a senseBox
-* Show some information about the sensor
-* Download the recorded data from the sensors
+Get some information about the senseBox sensors
 
+```{r get_senseBox_sensor_info}
+sensor_info <- get_senseBox_sensor_info(senseBoxId)
+```
 
-
-```{r}
-sensor_info <- get_senseBox_sensor_info(senseBoxId, tidy = T)
-
+```{r print_sensor_info, echo = FALSE}
 knitr::kable(
   sensor_info,
   format = "html"
 )
 ```
 
+With the argument `tidy = TRUE` a tidy data.frame will be produced:
+
+```{r get_senseBox_sensor_info_tidy}
+sensor_info <- get_senseBox_sensor_info(senseBoxId, tidy = TRUE)
+```
+
+```{r print_sensor_info_tidy, echo = FALSE}
+knitr::kable(
+  sensor_info,
+  format = "html"
+)
+```
+
+#### Download senseBox data
 
 We can now download data from the senseBox, either from a specific sensorId or from all sensors within the sensBox.
 In the following we are downloading all available sensors.
@@ -99,15 +138,15 @@ When you are interested in just a selection of sensors, just submit the sensorId
 sensor_ids <- get_senseBox_sensor_Ids(senseBoxId)
 
 data_sel <- get_senseBox_data(senseBoxId, 
-                              sensorId = sensor_ids$sensorIds)
+                              sensorId = sensor_ids$sensorIds[1:2])
 ```
 
-When using the above code, by defatult, the data from the last 48 h will be downloaded. You can donwload up to 10,000 records and sepcify the date of the record. The maximum time frame for downloading data is back to one month from now.
-Use the argument `fromDate` and `toDate` to specify the desired time frame. 
+When using the above code, by default, the data from the last 48 h will be downloaded. You can donwload up to 10,000 records and sepcify the date of the record. The maximum time frame for downloading data is back to one month from now.
+Use the argument `fromDate` and `toDate` to specify the desired time frame. Note that in contrast to the code above, all sensors from the senseBox are requested (by default) because argument `sensorId` is not set.
 
 ```{r}
 data_timeframe <- get_senseBox_data(senseBoxId, 
-                                    fromDate = "2017-11-11 11:11:11",
+                                    fromDate = "2017-11-11 11:11:11", 
                                     toDate = "2017-11-12 11:11:11")
 ```
 
@@ -118,6 +157,7 @@ We provide a sample code next and you just have to change the data executed in t
 library(ggplot2)
 library(reshape2)
 library(scales)
+
 
 data_melt <- melt(data_timeframe, id.vars = c("createdAt", "value"))
 
@@ -130,3 +170,74 @@ ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
 
 ```
 
+
+#### Download archived data
+
+Receiving data with `get_senseBox_data()` is limited to 10.000 data points. But every day all measured sensor data are stored in the senseBox archive. With the function `get_senseBox_archive()`  the zip file from a specific senseBox for a date can be downloaded. You have to unzip the folder by yourself and every sensor data is stored in a csv file.
+
+```{r eval=FALSE}
+get_senseBox_archive(senseBoxId,
+                    date = "2018-07-31")
+```
+
+
+
+### Some senseBox statistics
+
+```{r}
+infos <- get_senseBox_info(Id_list$senseBoxId, parallel = TRUE)
+```
+
+```{r, message=FALSE}
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
+infos %>% 
+  select(name, phenomena) %>%  
+  unnest() %>% 
+  count(phenomena) %>% 
+  arrange(desc(n)) %>% 
+  top_n(10, n) %>% 
+  ggplot() +
+  geom_histogram(aes(x = phenomena, y = n), stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r}
+infos %>% 
+  group_by(exposure, grouptag) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  na.omit() %>% 
+  top_n(5, n) %>% 
+  
+  ggplot() +
+  geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r, message=FALSE}
+library(lubridate)
+```
+
+```{r}
+infos %>% 
+ mutate(year = year(createdAt),
+        month = month(createdAt),
+        day = day(createdAt)) %>% 
+  group_by(year, exposure) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(year)) %>% 
+  
+  ggplot() +
+  geom_bar(aes(x = year, y = n, fill = exposure), stat = "identity")
+```
+
+
+## Available senseBoxes
+
+[This site](http://rpubs.com/Johnsenfr/414119) offers a list of all available senseBoxes (28-08-2018).
+You can search for any keyword you are interested in.

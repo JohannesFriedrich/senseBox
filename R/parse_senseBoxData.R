@@ -32,12 +32,12 @@ parse_senseBoxData <- function(boxdata) {
   thebox$sensorType <- list(unlist(lapply(sensors, function(s) { s$sensorType })))
 
   # FIXME: if one sensor has NA, max() returns bullshit
-  thebox$lastMeasurement <- max(lapply(sensors, function(s) {
-    if (!is.null(s$lastMeasurement))
-      as.POSIXct(strptime(s$lastMeasurement$createdAt, format = '%FT%T', tz = 'GMT'))
-    else
-      NA
-  })[[1]])
+  # thebox$lastMeasurement <- max(lapply(sensors, function(s) {
+  #   if (!is.null(s$lastMeasurement))
+  #     as.POSIXct(strptime(s$lastMeasurement$createdAt, format = '%FT%T', tz = 'GMT'))
+  #   else
+  #     NA
+  # })[[1]])
 
   # extract coordinates & transform to simple feature object
   thebox$long <- location$coordinates[[1]]

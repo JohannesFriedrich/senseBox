@@ -17,6 +17,17 @@ knitr::opts_chunk$set(collapse = TRUE,
 [![Coverage Status](https://codecov.io/gh/JohannesFriedrich/senseBox/branch/master/graph/badge.svg)](https://codecov.io/gh/JohannesFriedrich/senseBox)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
+### Motivation
+
+The senseBox is a do-it-yourself kit for stationary and mobile sensor stations. With senseBox you can make measurements, helping to answer a variety of scientific questions and to support Citizen Science Projects from the local to global scale. Data collected by senseBox can increase the measured density of various enviromental factors and can contribute to more precise statements regarding climate, pollution or traffic.
+
+openSenseMap is the platform for the publishing of senseBox and other open sensor data. Each senseBox transmits its measurements directly to the map, where anyone can observe, analyze and download the data. 
+
+This is the point where this **R**-pacakge comes into play: The **R**-package senseBox provides access to the senseBox API and enables the user to download, analyse and visualise the data provided by registered senseBoxes.
+
+With pacakges like `ggplot2` or `plotly` **R** is the perfect tool to visualise data.
+In the next chapter you find a short introduction to the basic usage of this **R**-package and some examples how to visualise the data.
+
 
 ### Installation
 
@@ -89,7 +100,7 @@ leaflet(location) %>%
   addMarkers(~long, ~lat, popup = ~htmltools::htmlEscape(name))
 ```
 
-#### Sensor Id informations
+#### Sensor Id information
 
 Get some information about the senseBox sensors
 
@@ -153,7 +164,6 @@ library(ggplot2)
 library(reshape2)
 library(scales)
 
-
 data_melt <- melt(data_timeframe, id.vars = c("createdAt", "value"))
 
 ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
@@ -174,8 +184,6 @@ Receiving data with `get_senseBox_data()` is limited to 10.000 data points. But 
 get_senseBox_archive(senseBoxId,
                     date = "2018-07-31")
 ```
-
-
 
 ### Some senseBox statistics
 
@@ -234,5 +242,5 @@ infos %>%
 
 ## Available senseBoxes
 
-[This site](http://rpubs.com/Johnsenfr/414119) offers a list of all available senseBoxes (28-08-2018).
+[This site](http://rpubs.com/Johnsenfr/443805) offers a list of all available senseBoxes (20-01-2019).
 You can search for any keyword you are interested in.

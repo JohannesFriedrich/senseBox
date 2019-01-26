@@ -11,6 +11,29 @@ Status](https://codecov.io/gh/JohannesFriedrich/senseBox/branch/master/graph/bad
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
+### Motivation
+
+The senseBox is a do-it-yourself kit for stationary and mobile sensor
+stations. With senseBox you can make measurements, helping to answer a
+variety of scientific questions and to support Citizen Science Projects
+from the local to global scale. Data collected by senseBox can increase
+the measured density of various enviromental factors and can contribute
+to more precise statements regarding climate, pollution or traffic.
+
+openSenseMap is the platform for the publishing of senseBox and other
+open sensor data. Each senseBox transmits its measurements directly to
+the map, where anyone can observe, analyze and download the data.
+
+This is the point where this **R**-pacakge comes into play: The
+**R**-package senseBox provides access to the senseBox API and enables
+the user to download, analyse and visualise the data provided by
+registered senseBoxes.
+
+With pacakges like `ggplot2` or `plotly` **R** is the perfect tool to
+visualise data. In the next chapter you find a short introduction to the
+basic usage of this **R**-package and some examples how to visualise the
+data.
+
 ### Installation
 
 ``` r
@@ -64,7 +87,7 @@ Number of senseBoxes
 
 <td style="text-align:right;">
 
-2255
+3115
 
 </td>
 
@@ -80,7 +103,7 @@ Number of Measurements
 
 <td style="text-align:right;">
 
-1309879647
+1906682349
 
 </td>
 
@@ -96,7 +119,7 @@ Number of measurements in last minute
 
 <td style="text-align:right;">
 
-2788
+3992
 
 </td>
 
@@ -304,12 +327,6 @@ sensorType
 
 </th>
 
-<th style="text-align:left;">
-
-lastMeasurement
-
-</th>
-
 <th style="text-align:right;">
 
 long
@@ -336,13 +353,19 @@ updatedAt
 
 <th style="text-align:left;">
 
+weblink
+
+</th>
+
+<th style="text-align:left;">
+
 description
 
 </th>
 
 <th style="text-align:left;">
 
-weblink
+lastMeasurementAt
 
 </th>
 
@@ -417,12 +440,6 @@ c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
 
 </td>
 
-<td style="text-align:left;">
-
-1423810876
-
-</td>
-
 <td style="text-align:right;">
 
 7.604985
@@ -432,6 +449,12 @@ c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
 <td style="text-align:right;">
 
 51.94647
+
+</td>
+
+<td style="text-align:left;">
+
+NA
 
 </td>
 
@@ -526,12 +549,6 @@ c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
 
 </td>
 
-<td style="text-align:left;">
-
-1462968647
-
-</td>
-
 <td style="text-align:right;">
 
 9.635454
@@ -541,6 +558,12 @@ c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
 <td style="text-align:right;">
 
 52.41255
+
+</td>
+
+<td style="text-align:left;">
+
+NA
 
 </td>
 
@@ -635,12 +658,6 @@ c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
 
 </td>
 
-<td style="text-align:left;">
-
-1481985589
-
-</td>
-
 <td style="text-align:right;">
 
 13.080662
@@ -662,6 +679,12 @@ MakeLight
 <td style="text-align:left;">
 
 1481986505
+
+</td>
+
+<td style="text-align:left;">
+
+NA
 
 </td>
 
@@ -711,7 +734,7 @@ leaflet(location) %>%
 
 <img src="README_figs/README-plot_location-1.png" width="672" />
 
-#### Sensor Id informations
+#### Sensor Id information
 
 Get some information about the senseBox sensors
 
@@ -1032,7 +1055,6 @@ library(ggplot2)
 library(reshape2)
 library(scales)
 
-
 data_melt <- melt(data_timeframe, id.vars = c("createdAt", "value"))
 
 ggplot(data_melt, aes(x = createdAt, y = value, colour = L2)) +
@@ -1121,6 +1143,6 @@ infos %>%
 
 ## Available senseBoxes
 
-[This site](http://rpubs.com/Johnsenfr/414119) offers a list of all
-available senseBoxes (28-08-2018). You can search for any keyword you
+[This site](http://rpubs.com/Johnsenfr/443805) offers a list of all
+available senseBoxes (20-01-2019). You can search for any keyword you
 are interested in.
