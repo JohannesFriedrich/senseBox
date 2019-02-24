@@ -1,0 +1,134 @@
+---
+title: "Available senseBoxes"
+author: "Johannes Friedrich"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    fig_caption: yes
+    fig_height: 7
+    fig_width: 7
+    number_sections: yes
+    toc: yes
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center")
+library(sp)
+library(rworldmap)
+library(senseBox)
+library(tidyverse)
+
+theme_update(axis.text = element_text(size = 14),
+         axis.title = element_text(size = 14, face = "bold"),
+         legend.text = element_text(size = 12),
+         legend.title = element_text(size = 12, face = "bold"))
+```
+
+```{r, include = FALSE}
+
+
+# The single argument to this function, points, is a data.frame in which:
+#   - column 1 contains the longitude in degrees
+#   - column 2 contains the latitude in degrees
+
+countriesSP <- getMap(resolution='high')
+
+coords2country = function(points){
+
+  #countriesSP <- getMap(resolution='high') #you could use high res map from rworldxtra if you were concerned about detail
+
+  # convert our list of points to a SpatialPoints object
+
+  # pointsSP = SpatialPoints(points, proj4string=CRS(" +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0"))
+
+  #setting CRS directly to that from rworldmap
+  pointsSP <- SpatialPoints(points, proj4string=CRS(proj4string(countriesSP)))
+
+
+  # use 'over' to get indices of the Polygons object containing each point
+  indices <- over(pointsSP, countriesSP)
+
+  # return the ADMIN names of each country
+  return(data.frame(
+    country = indices$ADMIN  ,
+    continent = indices$REGION))
+  #indices$ISO3 # returns the ISO3 code
+  #indices$continent   # returns the continent (6 continent model)
+  #indices$REGION   # returns the continent (7 continent model)
+}
+
+```
+
+```{r}
+Ids <- get_senseBox_Ids()
+
+infos <- get_senseBox_info(Ids$senseBoxId, parallel = TRUE)
+
+sensor_info <- get_senseBox_sensor_info(Ids$senseBoxId, parallel = TRUE)
+locations <- get_senseBox_location(Ids$senseBoxId, parallel = TRUE)
+
+country <- coords2country(locations[,2:3])
+
+locations <- bind_cols(infos[,1:2, ], country) %>% 
+  rename("senseBoxId" = "X_id")
+```
+
+```{r}
+DT::datatable(locations, escape = F,
+              rownames = FALSE,
+              options = list(
+                autoWidth = TRUE,
+                pageLength = 50))
+```
+
+```{r, eval = FALSE}
+library(gganimate)
+library(ggmap)
+library(lubridate)
+
+complete <- bind_cols(infos, country) %>% 
+  rename("senseBoxId" = "X_id")
+
+map <- get_map(location = "Germany",source = "osm",
+               zoom = 6)
+
+complete %<>% 
+  mutate(
+    day = day(createdAt),
+    year = year(createdAt),
+    time = strftime(createdAt, format = "%Y.%m.%d")
+  ) %>% 
+  filter(country == "Germany")
+  
+ p <- ggmap(map) +
+  geom_point(data = complete, 
+             mapping = aes(x = long, 
+                           y = lat, 
+                           colour = exposure,
+                           frame = time,
+                           cumulative = TRUE),
+             alpha = 0.5,
+             size = 3) +
+  guides(colour = guide_legend(override.aes = list(alpha = 1))) + 
+  geom_text(aes(x = 4, 
+                y = 55, 
+                frame = time, 
+                label = paste0(time), 
+                hjust = "left"), 
+            size = 10,
+            data = complete)
+```
+
+```{r, eval=FALSE}
+library(animation)
+ani.options(ani.width = 400, ani.height = 300)
+
+gganimate(p = p, 
+          filename = "Germany_2018_SenseBox_small.gif",
+          saver = "gif",
+          interval = 0.1, 
+          title_frame = FALSE)
+```
+
+
+

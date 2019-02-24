@@ -1,0 +1,42 @@
+---
+title: "Find inactive senseBoxes"
+author: "Johannes Friedrich"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    fig_caption: yes
+    fig_height: 7
+    fig_width: 7
+    number_sections: yes
+    toc: yes
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      cache = TRUE,
+                      fig.align = "center")
+library(senseBox)
+library(tidyverse)
+
+theme_update(axis.text = element_text(size = 14),
+         axis.title = element_text(size = 14, face = "bold"),
+         legend.text = element_text(size = 12),
+         legend.title = element_text(size = 12, face = "bold"))
+```
+
+```{r}
+data <- search_senseBox()
+```
+
+```{r}
+table <- data %>% 
+  filter(is.na(lastMeasurementAt)) %>% 
+  select(senseBoxId, name, lastMeasurementAt)
+```
+
+```{r}
+knitr::kable(
+  table,
+  format = "html"
+)
+```
+

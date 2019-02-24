@@ -20,6 +20,7 @@ Imports:
 Suggests:
   ggplot2,
   reshape2,
+  lubridate,
   htmltools,
   leaflet,
   knitr,

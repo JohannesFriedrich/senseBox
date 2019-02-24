@@ -87,7 +87,7 @@ Number of senseBoxes
 
 <td style="text-align:right;">
 
-3115
+3461
 
 </td>
 
@@ -103,7 +103,7 @@ Number of Measurements
 
 <td style="text-align:right;">
 
-1906682349
+2053650696
 
 </td>
 
@@ -119,7 +119,7 @@ Number of measurements in last minute
 
 <td style="text-align:right;">
 
-3992
+3456
 
 </td>
 
@@ -130,7 +130,7 @@ Number of measurements in last minute
 </table>
 
 With the function `get_senseBox_Ids()` you obtain all available senseBox
-Ids and the name of the staion.
+Ids and the name of the station.
 
 ``` r
 Id_list <- get_senseBox_Ids()
@@ -1144,5 +1144,5 @@ infos %>%
 ## Available senseBoxes
 
 [This site](http://rpubs.com/Johnsenfr/443805) offers a list of all
-available senseBoxes (20-01-2019). You can search for any keyword you
+available senseBoxes (22-02-2019). You can search for any keyword you
 are interested in.

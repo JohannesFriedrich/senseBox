@@ -54,7 +54,7 @@ knitr::kable(
 )
 ```
 
-With the function `get_senseBox_Ids()` you obtain all available senseBox Ids and the name of the staion.
+With the function `get_senseBox_Ids()` you obtain all available senseBox Ids and the name of the station.
 
 ```{r}
 Id_list <- get_senseBox_Ids()
@@ -242,5 +242,5 @@ infos %>%
 
 ## Available senseBoxes
 
-[This site](http://rpubs.com/Johnsenfr/443805) offers a list of all available senseBoxes (20-01-2019).
+[This site](http://rpubs.com/Johnsenfr/443805) offers a list of all available senseBoxes (22-02-2019).
 You can search for any keyword you are interested in.
