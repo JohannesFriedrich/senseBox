@@ -42,6 +42,11 @@ search_senseBox <- function(
   toDate = NA,
   tidy = FALSE
 ){
+
+  ##=======================================##
+  ## ERROR HANDLING
+  ##=======================================##
+
   if (!is.na(phenomenon) && is.na(date) && is.na(toDate) && is.na(fromDate))
     stop('Parameter "phenomenon" can only be used together with "date" or "from"/"to"')
 
@@ -53,6 +58,8 @@ search_senseBox <- function(
   if ( (!is.na(toDate) && is.na(fromDate)) || (is.na(toDate) && !is.na(fromDate))) {
     stop('Parameter "from"/"to" must be used together')
   }
+
+  ########
 
   query <- list()
 
@@ -71,14 +78,24 @@ search_senseBox <- function(
 
   temp <- do.call(.create_senseBox_request, c(path = "boxes", query))
 
-  parsed_list <- lapply(temp, parse_senseBoxData)
+  if (length(temp) > 0) {
 
-  df_parsed <- dplyr::bind_rows(parsed_list)
+    parsed_list <- lapply(temp, parse_senseBoxData)
 
-  df_parsed <- dplyr::rename_(df_parsed, "senseBoxId" = "X_id")
+    df_parsed <- dplyr::bind_rows(parsed_list)
 
-  if (tidy)
-    df_parsed <- tidyr::unnest(df_parsed)
+    df_parsed <- dplyr::rename(df_parsed, "senseBoxId" = "X_id")
 
-  return(df_parsed)
+    if (tidy)
+      df_parsed <- tidyr::unnest(df_parsed,
+                                 cols = c(phenomena, unit, sensorIds, sensorType))
+
+    return(df_parsed)
+
+  } else {
+
+    return(NULL)
+
+  }
+
 }

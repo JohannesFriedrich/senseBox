@@ -16,10 +16,11 @@
 
   if (httr::http_error(res)) {
     content <-  httr::content(res, 'parsed', encoding = 'UTF-8')
-    stop(if ('message' %in% names(content)) content$message else httr::status_code(res))
+    warning(if ('message' %in% names(content)) "senseBoxId not available or server down" else httr::status_code(res))
+    return(NULL)
+  } else {
+
+    content <- httr::content(res, type, encoding = 'UTF-8')
+    return(content)
   }
-
-  content <- httr::content(res, type, encoding = 'UTF-8')
-
-  return(content)
 }

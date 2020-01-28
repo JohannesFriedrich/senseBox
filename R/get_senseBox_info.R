@@ -33,7 +33,7 @@ get_senseBox_info <- function(
     stop("[get_senseBox_info()] Argument 'senseBoxId' is missing", call. = FALSE)
 
   if (class(unlist(senseBoxId)) != "character")
-    stop("[get_one_senseBox_info()] Argument 'senseBoxId' has to be a character", call. = FALSE)
+    stop("[get_senseBox_info()] Argument 'senseBoxId' has to be a character", call. = FALSE)
 
   if (class(parallel) != "logical")
     stop("[get_senseBox_info()] Argument 'parallel' has to be logical", call. = FALSE)
@@ -58,20 +58,41 @@ get_senseBox_info <- function(
   cl <- parallel::makeCluster(cores)
   on.exit(parallel::stopCluster(cl))
 
+  ## call main function
   parsed <- parallel::parLapply(cl, 1:length(senseBoxId), function(x){
 
     temp <- .create_senseBox_request(path = c("boxes", senseBoxId[x]))
-
-    return(temp)
+    return(list(data = temp,
+             senseBoxId = senseBoxId[x]))
 
   })
 
+  ## check if senseBoxId was not available
+  parsed <- lapply(parsed, function(x){
+
+    if (is.null(x$data)){
+      warning(paste0("[get_senseBox_info()] senseBoxId ", x$senseBoxId, " not found!"), call. = FALSE)
+      return(NULL)
+    } else {
+      return(x$data)
+    }
+  })
+
+  ## check if return value is NULL
+  if (is.null(unlist(parsed))) {
+    return(NULL)
+  }
+
+  ## parse list and make data.frame
   parsed_list <- lapply(parsed, parse_senseBoxData)
 
   df_parsed <- dplyr::bind_rows(parsed_list)
 
-  if (tidy)
-    df_parsed <- tidyr::unnest_(df_parsed)
+  ## output in "tidy" format, if needed
+  if (tidy){
+    df_parsed <- tidyr::unnest(df_parsed,
+                               cols = c(phenomena, unit, sensorIds, sensorType))
+  }
 
   return(df_parsed)
 }

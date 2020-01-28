@@ -12,6 +12,8 @@
 #' @export
 parse_senseBoxData <- function(boxdata) {
 
+  if (!is.null(boxdata)){
+
   # extract nested lists for later use & clean them from the list
   # to allow a simple data.frame structure
   sensors <- boxdata$sensors
@@ -46,4 +48,5 @@ parse_senseBoxData <- function(boxdata) {
     thebox$height <- location$coordinates[[3]]
 
   return(thebox)
+  }
 }

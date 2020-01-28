@@ -2,7 +2,7 @@ Package: senseBox
 Type: Package
 Title: senseBox API wrapper
 Version: 0.0.1
-Date: 2018-XX-XX
+Date: 2020-XX-XX
 Authors@R: person("Johannes", "Friedrich", role = c("aut", "cre"), email = "Johannes.Friedrich@posteo.de")
 Maintainer: Johannes Friedrich <Johannes.Friedrich@posteo.de>
 Description: An R API wrapper for the senseBox project. Download and analyse environmental data provided by https://sensebox.de/en/.
@@ -16,7 +16,9 @@ Imports:
   jsonlite,
   parallel,
   dplyr,
-  tidyr
+  tidyr,
+  rvest,
+  xml2
 Suggests:
   ggplot2,
   reshape2,

@@ -2,11 +2,11 @@
 #'
 #' @param senseBoxId [character] (**required**): senseBoxId
 #' @param date [character] (**optional**): Download data from date in format YYYY-mm-dd. If no date was given,
-#' the functions tries to download the archive from yesterday.
+#' the functions tries to download the archive from the day before yesterday.
 #' @section Function version: 0.0.1
 #' @author Johannes Friedrich
 #'
-#' @return The function returns an [httr::response] object.
+#' @return The function returns a [data.frame] object.
 #'
 #' @examples
 #'
@@ -34,37 +34,87 @@ get_senseBox_archive <- function(
   ##=======================================##
 
   if (missing(senseBoxId))
-    stop("[get_senseBox_data()] Argument 'senseBoxId' is missing", call. = FALSE)
+    stop("[get_senseBox_archive()] Argument 'senseBoxId' is missing.", call. = FALSE)
 
   if (class(unlist(senseBoxId)) != "character")
-    stop("[get_senseBox_data()] Argument 'senseBoxId' has to be a character", call. = FALSE)
+    stop("[get_senseBox_archive()]  Argument 'senseBoxId' has to be a character.", call. = FALSE)
 
   if(is.null(date))
-    date <- Sys.Date() - 1
+    warning("[get_senseBox_archive()]  Argument 'date' not set. By default the day before yesterday was chosen.", call. = FALSE)
+    date <- Sys.Date() - 2
 
   ##==== END ERROR HANDLING
 
-  zip_url <- "https://uni-muenster.sciebo.de/index.php/s/HyTbguBP4EkqBcp/download?path=/data/"
+  # get right URL
+  zip_url <- "https://archive.opensensemap.org/" #"https://uni-muenster.sciebo.de/index.php/s/HyTbguBP4EkqBcp/download?path=/data/"
 
   zip_url <- paste0(zip_url, date,"/")
 
-  senseBox_name <- get_senseBox_info(senseBoxId)$name
+  senseBox_info <- get_senseBox_info(senseBoxId)
 
-  senseBox_name <- paste(strsplit(senseBox_name, " ")[[1]], collapse = "_")
+  if (is.null(senseBox_info$name)) {
+    return(NULL)
+  }
 
+  senseBox_name <- strsplit(senseBox_info$name, " ")
+
+  senseBox_name <- unlist(lapply(senseBox_name, function(x){
+
+    paste(x, collapse = "_")
+
+  }), recursive = F)
+
+  ## remove unwanted characters
+  senseBox_name <- gsub("[^0-9A-Za-z._-]","__" , senseBox_name, ignore.case = TRUE)
+
+  ## compose address
   complete_name <- paste(senseBoxId, senseBox_name, sep = "-")
 
   complete_path <- paste(zip_url, complete_name, sep = "")
 
-  resp <- httr::GET(
-      complete_path,
-      write_disk(paste0(complete_name,".zip"), overwrite = TRUE),
-      progress())
+  ## try if URL works
+  ## https://stackoverflow.com/questions/12193779/how-to-write-trycatch-in-r
+  parsed_list <- lapply(complete_path, function(x){
 
-  if (httr::http_type(resp) != "application/zip") {
-    stop("[get_senseBox_archive()] API did not return zip file\n", call. = FALSE)
-  }
+    try_url <- tryCatch(
+      expr = {
+        xml2::read_html(x)
+      },
 
-  return(resp)
+      error=function(cond) {
+        message(paste("URL does not seem to exist:", url))
+        message("Here's the original error message:")
+        message(cond)
+        # Choose a return value in case of error
+        return(FALSE)
+      }
+    ) # end try-catch
+
+    if (class(try_url)[1] == "xml_document"){
+
+      csv_pos <- rvest::html_nodes(try_url, "a")
+      csv_pos <- rvest::html_attr(csv_pos, "href")
+
+      csv_links <- csv_pos[grepl(".csv", csv_pos)]
+
+      ## download CSV files
+      return(csv_links)
+
+    } else {
+
+      warning("[get_senseBox_archive()] URL was not correct! Check date and senseBoxId", call. = FALSE)
+      return(NULL)
+
+    }
+
+  })
+
+  ## give names
+  names(parsed_list) <- senseBoxId
+
+  ## list to dataframe
+  df_parsed <- dplyr::bind_rows(parsed_list)
+
+  return(df_parsed)
 
 }

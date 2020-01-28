@@ -87,7 +87,7 @@ Number of senseBoxes
 
 <td style="text-align:right;">
 
-3461
+6138
 
 </td>
 
@@ -103,7 +103,7 @@ Number of Measurements
 
 <td style="text-align:right;">
 
-2053650696
+4149842980
 
 </td>
 
@@ -119,7 +119,7 @@ Number of measurements in last minute
 
 <td style="text-align:right;">
 
-3456
+4937
 
 </td>
 
@@ -359,13 +359,13 @@ weblink
 
 <th style="text-align:left;">
 
-description
+lastMeasurementAt
 
 </th>
 
 <th style="text-align:left;">
 
-lastMeasurementAt
+description
 
 </th>
 
@@ -1078,7 +1078,7 @@ file.
 
 ``` r
 get_senseBox_archive(senseBoxId,
-                    date = "2018-07-31")
+                     date = "2018-07-31")
 ```
 
 ### Some senseBox statistics
@@ -1102,6 +1102,8 @@ infos %>%
   ggplot() +
   geom_histogram(aes(x = phenomena, y = n), stat = "identity") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+## Warning: `cols` is now required.
+## Please use `cols = c(phenomena)`
 ## Warning: Ignoring unknown parameters: binwidth, bins, pad
 ```
 
@@ -1143,6 +1145,6 @@ infos %>%
 
 ## Available senseBoxes
 
-[This site](http://rpubs.com/Johnsenfr/443805) offers a list of all
-available senseBoxes (22-02-2019). You can search for any keyword you
+[This site](http://rpubs.com/Johnsenfr/488288) offers a list of all
+available senseBoxes (27-01-2020). You can search for any keyword you
 are interested in.

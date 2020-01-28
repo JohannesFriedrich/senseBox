@@ -36,7 +36,7 @@ get_senseBox_location <- function(
   ## use get_senseBox_info() to get all neccessary information
   info <- get_senseBox_info(senseBoxId, parallel = parallel)
 
-  df <- dplyr::select_(info, "name", "long", "lat")
+  df <- dplyr::select(info, "name", "long", "lat")
 
   return(df)
 

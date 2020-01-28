@@ -42,10 +42,11 @@ get_senseBox_sensor_Ids <- function(
 
   ## use get_senseBox_info() to get all neccessary information
   info <- get_senseBox_info(senseBoxId, parallel = parallel)
-  df <- dplyr::select_(info, "name", "phenomena", "sensorIds", "sensorType")
+  df <- dplyr::select(info, "name", "phenomena", "sensorIds", "sensorType")
 
   if (tidy)
-    df <- tidyr::unnest_(df)
+    df <- tidyr::unnest(df,
+                        cols = c(phenomena, sensorIds, sensorType))
 
   return(df)
 

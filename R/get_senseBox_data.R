@@ -86,7 +86,12 @@ get_senseBox_data <- function(
 
   Ids_loop <- lapply(1:length(senseBoxId), function(x){
 
-    sensor_info <- get_senseBox_sensor_info(senseBoxId[x], tidy = T)
+    sensor_info <- get_senseBox_sensor_info(senseBoxId[x], tidy = TRUE)
+
+    ## return NULL, if return value  from 'get_senseBox_sensor_info()' is NULL
+    if (is.null(sensor_info)){
+      return(NULL)
+    }
 
     for (i in 1:length(sensorId[[x]])) {
       if (all(sensorId[[x]] != "all")) {
@@ -138,7 +143,7 @@ get_senseBox_data <- function(
         stop("[get_senseBox_data()] API did not return json\n", call. = FALSE)
       }
 
-      if (!http_error(resp$status_code)) {
+      if (!httr::http_error(resp$status_code)) {
 
         parsed_single <- jsonlite::fromJSON(httr::content(resp, "text"))
 
@@ -161,6 +166,7 @@ get_senseBox_data <- function(
 
       } else {
 
+        warning(paste0("[get_senseBox_data()] HTTP-error for senseBoxId ",senseBoxId[x]), call. = FALSE)
         return(NULL)
 
       } ## end else
@@ -173,9 +179,12 @@ get_senseBox_data <- function(
 
     }) ## end Ids_loop <- lapply
 
+  ## name the list
   names(Ids_loop) <- senseBoxId
 
-  # Ids_loop <- parse_senseBoxData(Ids_loop)
+  ## check if senseBoxId was not available
+  ## https://stackoverflow.com/questions/33004238/r-removing-null-elements-from-a-list/33004339#33004339
+  Ids_loop[sapply(Ids_loop, is.null)] <- NULL
 
   return(Ids_loop)
 }

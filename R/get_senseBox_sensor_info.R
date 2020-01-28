@@ -40,13 +40,29 @@ get_senseBox_sensor_info <- function(
   if (class(tidy) != "logical")
     stop("[get_senseBox_sensor_info()] Argument 'tidy' has to be logical", call. = FALSE)
 
+  ##==== END ERROR HANDLING
+
   ## use get_senseBox_info() to get all neccessary information
+  ## get_senseBox_info() will remove all not available IDs -> just parse them
   info <- get_senseBox_info(senseBoxId, parallel = parallel)
 
-  df <- dplyr::select_(info, "name", "phenomena", "unit", "sensorIds", "sensorType")
+  ##check if info is empty
+  if (is.null(info)){
+    return(NULL)
+  }
+
+  info_list <- lapply(1:nrow(info), function(x){
+    df <- dplyr::select(info[x,1:ncol(info)], "name", "phenomena", "unit", "sensorIds", "sensorType")
+
+    return(df)
+
+  })
+
+  df <- dplyr::bind_rows(info_list)
 
   if (tidy)
-    df <- tidyr::unnest_(df, c("phenomena", "unit", "sensorIds", "sensorType"))
+    df <- tidyr::unnest(df,
+                        cols = c("phenomena", "unit", "sensorIds", "sensorType"))
 
   return(df)
 
