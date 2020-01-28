@@ -8,21 +8,25 @@
 
 <title>Get measurement data from a senseBox — get_senseBox_data • senseBox</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,13 +34,14 @@
 
 
 
-<meta property="og:title" content="Get measurement data from a senseBox — get_senseBox_data" />
 
+<meta property="og:title" content="Get measurement data from a senseBox — get_senseBox_data" />
 <meta property="og:description" content="If the arguments fromDate and toDate are NOT given, the measurements from the last 48 h from
 now are downloaded. The maximum numbers of downloaded measurements are 10,000.
 The maximum time frame is one month.
 It is possible to download the data directly as a csv file, when argument CSV is TRUE." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -59,6 +64,7 @@ It is possible to download the data directly as a csv file, when argument CSV is
 
   gtag('config', 'UA-84499524-2');
 </script>
+
 
   </head>
 
@@ -92,7 +98,6 @@ It is possible to download the data directly as a csv file, when argument CSV is
   <a href="../articles/Getting_started_with_the_R_package_senseBox.html">Getting Started with the R-package senseBox</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../news/index.html">
@@ -122,6 +127,7 @@ It is possible to download the data directly as a csv file, when argument CSV is
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -133,61 +139,57 @@ It is possible to download the data directly as a csv file, when argument CSV is
     </div>
 
     <div class="ref-description">
-    
     <p>If the arguments <code>fromDate</code> and <code>toDate</code> are NOT given, the measurements from the last 48 h from
 now are downloaded. The maximum numbers of downloaded measurements are 10,000.
 The maximum time frame is one month.
 It is possible to download the data directly as a csv file, when argument <code>CSV</code> is <code>TRUE</code>.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>get_senseBox_data</span>(<span class='no'>senseBoxId</span>, <span class='kw'>sensorId</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"all"</span>, <span class='kw'>times</span> <span class='kw'>=</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>(<span class='no'>senseBoxId</span>))), <span class='kw'>fromDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>toDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>get_senseBox_data</span>(<span class='no'>senseBoxId</span>, <span class='kw'>sensorId</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"all"</span>, <span class='kw'>times</span> <span class='kw'>=</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>(<span class='no'>senseBoxId</span>))), <span class='kw'>fromDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>toDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>CSV</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>POSIXct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>senseBoxId</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a>or <a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector</a> of <a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> (<strong>required</strong>): senseBoxId or a <a href='https://www.rdocumentation.org/packages/base/topics/vector'>vector</a> of <a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> of senseBoxIds</p></td>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a>or <a href='https://rdrr.io/r/base/vector.html'>vector</a> of <a href='https://rdrr.io/r/base/character.html'>character</a> (<strong>required</strong>): senseBoxId or a <a href='https://rdrr.io/r/base/vector.html'>vector</a> of <a href='https://rdrr.io/r/base/character.html'>character</a> of senseBoxIds</p></td>
     </tr>
     <tr>
       <th>sensorId</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> or <a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a> of <a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> (<strong>optional</strong>): sensorId or a <a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a> of senseBoxIds. When no sensorIds are
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a> or <a href='https://rdrr.io/r/base/list.html'>list</a> of <a href='https://rdrr.io/r/base/character.html'>character</a> (<strong>optional</strong>): sensorId or a <a href='https://rdrr.io/r/base/list.html'>list</a> of senseBoxIds. When no sensorIds are
 submitted, all sensorIds from this sensebox are requested.</p></td>
     </tr>
     <tr>
       <th>fromDate</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> (<strong>optional</strong>): Just show data with from date in format YYYY-mm-dd HH:MM:SS</p></td>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a> (<strong>optional</strong>): Just show data with from date in format YYYY-mm-dd HH:MM:SS</p></td>
     </tr>
     <tr>
       <th>toDate</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> (<strong>optional</strong>): Just show data with up to date in format YYYY-mm-dd HH:MM:SS</p></td>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a> (<strong>optional</strong>): Just show data with up to date in format YYYY-mm-dd HH:MM:SS</p></td>
     </tr>
     <tr>
       <th>parallel</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical</a> (<strong>optional</strong>): Should the calculations be executed on multiple cores? At least 4 cores
+      <td><p><a href='https://rdrr.io/r/base/logical.html'>logical</a> (<strong>optional</strong>): Should the calculations be executed on multiple cores? At least 4 cores
 are necessary to use this feature.</p></td>
     </tr>
     <tr>
       <th>CSV</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical</a> (<strong>optional</strong>): Download data as csv file? NOT SUPPORTED UNTIL NOW!</p></td>
+      <td><p><a href='https://rdrr.io/r/base/logical.html'>logical</a> (<strong>optional</strong>): Download data as csv file? NOT SUPPORTED UNTIL NOW!</p></td>
     </tr>
     <tr>
       <th>POSIXct</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical</a> (<strong>optional</strong>): Should the timestamp be translated into POSIXct?</p></td>
+      <td><p><a href='https://rdrr.io/r/base/logical.html'>logical</a> (<strong>optional</strong>): Should the timestamp be translated into POSIXct?</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a> with every entry is a sensBoxId. Every list entry inherits a <a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a> with values and dates.</p>
-    
+    <p>A <a href='https://rdrr.io/r/base/list.html'>list</a> with every entry is a sensBoxId. Every list entry inherits a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a> with values and dates.</p>
     <h2 class="hasAnchor" id="function-version"><a class="anchor" href="#function-version"></a>Function version</h2>
 
     <p>0.0.1</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -508,9 +510,9 @@ are necessary to use this feature.</p></td>
 #&gt; 304  1.00 2017-11-25 00:01:51
 #&gt; 
 #&gt; </div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>get_senseBox_data</span>(
-  <span class='kw'>senseBoxId</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"5957b67494f0520011304cc1"</span>,<span class='st'>"5957b67494f0520011304cc1"</span>) ,
+  <span class='kw'>senseBoxId</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"5957b67494f0520011304cc1"</span>,<span class='st'>"5957b67494f0520011304cc1"</span>) ,
   <span class='kw'>sensorId</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
   <span class='kw'>fromDate</span> <span class='kw'>=</span> <span class='st'>"2017-11-25-12:00:00"</span>,
   <span class='kw'>toDate</span> <span class='kw'>=</span> <span class='st'>"2017-11-26-12:00:00"</span>)
@@ -520,18 +522,14 @@ are necessary to use this feature.</p></td>
   <span class='kw'>sensorId</span> <span class='kw'>=</span> <span class='st'>"5957b67494f0520011304cc4"</span>,
   <span class='kw'>fromDate</span> <span class='kw'>=</span> <span class='st'>"2017-11-25-12:00:00"</span>,
   <span class='kw'>toDate</span> <span class='kw'>=</span> <span class='st'>"2017-11-26-12:00:00"</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#function-version">Function version</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -540,19 +538,23 @@ are necessary to use this feature.</p></td>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Johannes Friedrich.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
