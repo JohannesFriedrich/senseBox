@@ -239,5 +239,5 @@ infos %>%
 
 ## Available senseBoxes
 
-[This site](http://rpubs.com/Johnsenfr/414119) offers a list of all available senseBoxes (28-08-2018).
+[This site](http://rpubs.com/Johnsenfr/488288) offers a list of all available senseBoxes (27-01-2020).
 You can search for any keyword you are interested in.
