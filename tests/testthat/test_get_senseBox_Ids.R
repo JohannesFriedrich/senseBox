@@ -6,7 +6,7 @@ test_that("Check output length and class", {
 
   temp <-  get_senseBox_Ids()
 
-  expect_equal(class(temp), "data.frame")
+  expect_s3_class(temp, "data.frame")
   expect_equal(names(temp), c("senseBoxId", "name"))
 
 

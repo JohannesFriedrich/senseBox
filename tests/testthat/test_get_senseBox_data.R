@@ -12,7 +12,7 @@ test_that("Check output length and class", {
   expect_type(temp, "list")
   expect_type(temp[[1]], "list")
   expect_length(temp[[1]], 2)
-  expect_equal(class(temp[[1]][[1]]), "data.frame")
+  expect_s3_class(temp[[1]][[1]], "data.frame")
 
   temp <-  get_senseBox_data(
     senseBoxId = "5957b67494f0520011304cc1",
@@ -22,7 +22,7 @@ test_that("Check output length and class", {
   expect_type(temp, "list")
   expect_type(temp[[1]], "list")
   expect_length(temp[[1]], 5)
-  expect_equal(class(temp[[1]][[1]]), "data.frame")
+  expect_s3_class(temp[[1]][[1]], "data.frame")
 
   temp <-  get_senseBox_data(
     senseBoxId = c("5957b67494f0520011304cc1", "5957b67494f0520011304cc1"),
@@ -32,7 +32,7 @@ test_that("Check output length and class", {
   expect_type(temp, "list")
   expect_type(temp[[1]], "list")
   expect_length(temp[[1]], 5)
-  expect_equal(class(temp[[1]][[1]]), "data.frame")
+  expect_s3_class(temp[[1]][[1]], "data.frame")
 
   temp <-  get_senseBox_data(
     senseBoxId = c("5957b67494f0520011304cc1", "5957b67494f0520011304cc1"),
@@ -43,7 +43,7 @@ test_that("Check output length and class", {
   expect_type(temp, "list")
   expect_type(temp[[1]], "list")
   expect_length(temp[[1]], 2)
-  expect_equal(class(temp[[1]][[1]]), "data.frame")
+  expect_s3_class(temp[[1]][[1]], "data.frame")
 
 
 })
@@ -98,6 +98,6 @@ test_that("Check parallel = TRUE", {
   expect_type(temp, "list")
   expect_type(temp[[1]], "list")
   expect_length(temp[[1]], 5)
-  expect_equal(class(temp[[1]][[1]]), "data.frame")
+  expect_s3_class(temp[[1]][[1]], "data.frame")
 
 })
