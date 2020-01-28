@@ -19,6 +19,7 @@ after_success:
 - Rscript -e 'covr::codecov()'
 
 r_check_args: "--no-vignettes"
+r_build_args: "--no-build-vignettes"
 
 ##create notification
 notifications:
