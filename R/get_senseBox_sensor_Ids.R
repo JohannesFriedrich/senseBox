@@ -46,7 +46,7 @@ get_senseBox_sensor_Ids <- function(
 
   if (tidy)
     df <- tidyr::unnest(df,
-                        cols = c(phenomena, sensorIds, sensorType))
+                        cols = c("phenomena", "sensorIds", "sensorType"))
 
   return(df)
 

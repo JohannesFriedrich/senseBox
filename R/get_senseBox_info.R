@@ -91,7 +91,7 @@ get_senseBox_info <- function(
   ## output in "tidy" format, if needed
   if (tidy){
     df_parsed <- tidyr::unnest(df_parsed,
-                               cols = c(phenomena, unit, sensorIds, sensorType))
+                               cols = c("phenomena", "unit", "sensorIds", "sensorType"))
   }
 
   return(df_parsed)

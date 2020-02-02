@@ -10,10 +10,10 @@ get_senseBox_archive(senseBoxId, date = NULL)
 \item{senseBoxId}{\link{character} (\strong{required}): senseBoxId}
 
 \item{date}{\link{character} (\strong{optional}): Download data from date in format YYYY-mm-dd. If no date was given,
-the functions tries to download the archive from yesterday.}
+the functions tries to download the archive from the day before yesterday.}
 }
 \value{
-The function returns an \link[httr:response]{httr::response} object.
+The function returns a \link{data.frame} object.
 }
 \description{
 Get archived data from a senseBox
