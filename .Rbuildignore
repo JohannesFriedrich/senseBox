@@ -22,3 +22,5 @@ Readme\.md
 
 # Exclude rsconnect
 ^rsconnect$
+^doc$
+^Meta$

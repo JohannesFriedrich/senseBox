@@ -88,7 +88,7 @@ search_senseBox <- function(
 
     if (tidy)
       df_parsed <- tidyr::unnest(df_parsed,
-                                 cols = c(phenomena, unit, sensorIds, sensorType))
+                                 cols = c("phenomena", "unit", "sensorIds", "sensorType"))
 
     return(df_parsed)
 
