@@ -54,79 +54,42 @@ stats <- get_senseBox_stats()
 ```
 
 <table>
-
 <thead>
-
 <tr>
-
 <th style="text-align:left;">
-
 variable
-
 </th>
-
 <th style="text-align:right;">
-
 value
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:left;">
-
 Number of senseBoxes
-
 </td>
-
 <td style="text-align:right;">
-
-6138
-
+8615
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 Number of Measurements
-
 </td>
-
 <td style="text-align:right;">
-
-4149842980
-
+9775125887
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 Number of measurements in last minute
-
 </td>
-
 <td style="text-align:right;">
-
-4937
-
+7309
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 With the function `get_senseBox_Ids()` you obtain all available senseBox
@@ -137,127 +100,66 @@ Id_list <- get_senseBox_Ids()
 ```
 
 <table>
-
 <thead>
-
 <tr>
-
 <th style="text-align:left;">
-
 senseBoxId
-
 </th>
-
 <th style="text-align:left;">
-
 name
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:left;">
-
 5386026e5f08822009b8b60d
-
 </td>
-
 <td style="text-align:left;">
-
 CALIMERO
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 538ee6a4a83415541576b777
-
 </td>
-
 <td style="text-align:left;">
-
 SenGIS Arbeitsgruppe - Uni Hohenheim
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 5391be52a8341554157792e6
-
 </td>
-
 <td style="text-align:left;">
-
 LeKa Berlin
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 539c00c2a83415541578eaf5
-
 </td>
-
 <td style="text-align:left;">
-
 IV Gummersbach
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 539fec94a8341554157931d7
-
 </td>
-
 <td style="text-align:left;">
-
 The PaderWarrior Reloded
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 53a0017aa834155415793281
-
 </td>
-
 <td style="text-align:left;">
-
 Alt-Lietzow
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 You are just interested in senseBoxes, which collect data from “indoor”?
@@ -268,448 +170,228 @@ indoor <- search_senseBox(exposure =  "indoor")
 ```
 
 <table>
-
 <thead>
-
 <tr>
-
 <th style="text-align:left;">
-
 senseBoxId
-
 </th>
-
 <th style="text-align:left;">
-
 exposure
-
 </th>
-
 <th style="text-align:left;">
-
 name
-
 </th>
-
 <th style="text-align:left;">
-
 createdAt
-
 </th>
-
 <th style="text-align:left;">
-
 model
-
 </th>
-
 <th style="text-align:left;">
-
 phenomena
-
 </th>
-
 <th style="text-align:left;">
-
 unit
-
 </th>
-
 <th style="text-align:left;">
-
 sensorIds
-
 </th>
-
 <th style="text-align:left;">
-
 sensorType
-
 </th>
-
 <th style="text-align:right;">
-
 long
-
 </th>
-
 <th style="text-align:right;">
-
 lat
-
 </th>
-
 <th style="text-align:left;">
-
 grouptag
-
 </th>
-
 <th style="text-align:left;">
-
 updatedAt
-
 </th>
-
 <th style="text-align:left;">
-
 weblink
-
 </th>
-
 <th style="text-align:left;">
-
 lastMeasurementAt
-
 </th>
-
 <th style="text-align:left;">
-
 description
-
 </th>
-
 <th style="text-align:right;">
-
 height
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:left;">
-
 54d79ea81b93e970075153f4
-
 </td>
-
 <td style="text-align:left;">
-
 indoor
-
 </td>
-
 <td style="text-align:left;">
-
 Aasee-Station
-
 </td>
-
 <td style="text-align:left;">
-
-1423417000
-
+2015-02-08 17:36:40
 </td>
-
 <td style="text-align:left;">
-
 custom
-
 </td>
-
 <td style="text-align:left;">
-
-c(“UV”, “Beleuchtungsstärke”, “Luftdruck”, “rel. Luftfeuchte”,
-“Temperatur”)
-
+UV , Beleuchtungsstärke, Luftdruck , rel. Luftfeuchte , Temperatur
 </td>
-
 <td style="text-align:left;">
-
-c(“UV-Index”, “lx”, “Pa”, “%”, “°C”)
-
+UV-Index, lx , Pa , % , °C
 </td>
-
 <td style="text-align:left;">
-
-c(“54d79ea81b93e970075153f6”, “54d79ea81b93e970075153f7”,
-“54d79ea81b93e970075153f8”, “54d79ea81b93e970075153f9”,
-“54d79ea81b93e970075153fa”)
-
+54d79ea81b93e970075153f6, 54d79ea81b93e970075153f7,
+54d79ea81b93e970075153f8, 54d79ea81b93e970075153f9,
+54d79ea81b93e970075153fa
 </td>
-
 <td style="text-align:left;">
-
-c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
-
+GUVA-S12D, TSL2561 , BMP085 , DHT11 , DHT11
 </td>
-
 <td style="text-align:right;">
-
 7.604985
-
 </td>
-
 <td style="text-align:right;">
-
 51.94647
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:right;">
-
 NA
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 54e73244a807ade00f85f5bd
-
 </td>
-
 <td style="text-align:left;">
-
 indoor
-
 </td>
-
 <td style="text-align:left;">
-
 PhotonicNet
-
 </td>
-
 <td style="text-align:left;">
-
-1424437828
-
+2015-02-20 13:10:28
 </td>
-
 <td style="text-align:left;">
-
 custom
-
 </td>
-
 <td style="text-align:left;">
-
-c(“UV”, “Beleuchtungsstärke”, “Luftdruck”, “rel. Luftfeuchte”,
-“Temperatur”)
-
+UV , Beleuchtungsstärke, Luftdruck , rel. Luftfeuchte , Temperatur
 </td>
-
 <td style="text-align:left;">
-
-c(“UV-Index”, “lx”, “Pa”, “%”, “°C”)
-
+UV-Index, lx , Pa , % , °C
 </td>
-
 <td style="text-align:left;">
-
-c(“54e73244a807ade00f85f5bf”, “54e73244a807ade00f85f5c0”,
-“54e73244a807ade00f85f5c1”, “54e73244a807ade00f85f5c2”,
-“54e73244a807ade00f85f5c3”)
-
+54e73244a807ade00f85f5bf, 54e73244a807ade00f85f5c0,
+54e73244a807ade00f85f5c1, 54e73244a807ade00f85f5c2,
+54e73244a807ade00f85f5c3
 </td>
-
 <td style="text-align:left;">
-
-c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
-
+GUVA-S12D, TSL2561 , BMP085 , DHT11 , DHT11
 </td>
-
 <td style="text-align:right;">
-
 9.635454
-
 </td>
-
 <td style="text-align:right;">
-
 52.41255
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:right;">
-
 NA
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 54e7a5faa807ade00f868aab
-
 </td>
-
 <td style="text-align:left;">
-
 indoor
-
 </td>
-
 <td style="text-align:left;">
-
 fablab potsdam
-
 </td>
-
 <td style="text-align:left;">
-
-1472403276
-
+2016-08-28 16:54:36
 </td>
-
 <td style="text-align:left;">
-
 custom
-
 </td>
-
 <td style="text-align:left;">
-
-c(“UV”, “Beleuchtungsstärke”, “Luftdruck”, “rel. Luftfeuchte”,
-“Temperatur”)
-
+UV , Beleuchtungsstärke, Luftdruck , rel. Luftfeuchte , Temperatur
 </td>
-
 <td style="text-align:left;">
-
-c(“UV-Index”, “lx”, “Pa”, “%”, “°C”)
-
+UV-Index, lx , Pa , % , °C
 </td>
-
 <td style="text-align:left;">
-
-c(“54e7a5faa807ade00f868aad”, “54e7a5faa807ade00f868aae”,
-“54e7a5faa807ade00f868aaf”, “54e7a5faa807ade00f868ab0”,
-“54e7a5faa807ade00f868ab1”)
-
+54e7a5faa807ade00f868aad, 54e7a5faa807ade00f868aae,
+54e7a5faa807ade00f868aaf, 54e7a5faa807ade00f868ab0,
+54e7a5faa807ade00f868ab1
 </td>
-
 <td style="text-align:left;">
-
-c(“GUVA-S12D”, “TSL2561”, “BMP085”, “DHT11”, “DHT11”)
-
+GUVA-S12D, TSL2561 , BMP085 , DHT11 , DHT11
 </td>
-
 <td style="text-align:right;">
-
 13.080662
-
 </td>
-
 <td style="text-align:right;">
-
 52.39649
-
 </td>
-
 <td style="text-align:left;">
-
 MakeLight
-
 </td>
-
 <td style="text-align:left;">
-
-1481986505
-
+2016-12-17 14:55:05
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:left;">
-
 NA
-
 </td>
-
 <td style="text-align:right;">
-
 NA
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 We chose one ID for the following examples
@@ -732,7 +414,8 @@ leaflet(location) %>%
   addMarkers(~long, ~lat, popup = ~htmltools::htmlEscape(name))
 ```
 
-<img src="README_figs/README-plot_location-1.png" width="672" />
+<div id="htmlwidget-08c76fdd9326de3f383b" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-08c76fdd9326de3f383b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script>
 
 #### Sensor Id information
 
@@ -743,84 +426,45 @@ sensor_info <- get_senseBox_sensor_info(senseBoxId)
 ```
 
 <table>
-
 <thead>
-
 <tr>
-
 <th style="text-align:left;">
-
 name
-
 </th>
-
 <th style="text-align:left;">
-
 phenomena
-
 </th>
-
 <th style="text-align:left;">
-
 unit
-
 </th>
-
 <th style="text-align:left;">
-
 sensorIds
-
 </th>
-
 <th style="text-align:left;">
-
 sensorType
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:left;">
-
 Leipziger65-Süd
-
 </td>
-
 <td style="text-align:left;">
-
-c(“PM10”, “PM2.5”, “Temperatur”, “rel. Luftfeuchte”)
-
+PM10 , PM2.5 , Temperatur , rel. Luftfeuchte
 </td>
-
 <td style="text-align:left;">
-
-c(“µg/m³”, “µg/m³”, “°C”, “%”)
-
+µg/m³, µg/m³, °C , %
 </td>
-
 <td style="text-align:left;">
-
-c(“592ca4b851d3460011ea2636”, “592ca4b851d3460011ea2637”,
-“592ca4b851d3460011ea2638”, “592ca4b851d3460011ea2639”)
-
+592ca4b851d3460011ea2636, 592ca4b851d3460011ea2637,
+592ca4b851d3460011ea2638, 592ca4b851d3460011ea2639
 </td>
-
 <td style="text-align:left;">
-
-c(“SDS 011”, “SDS 011”, “DHT22”, “DHT22”)
-
+SDS 011, SDS 011, DHT22 , DHT22
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 With the argument `tidy = TRUE` a tidy data.frame will be produced:
@@ -830,185 +474,95 @@ sensor_info <- get_senseBox_sensor_info(senseBoxId, tidy = TRUE)
 ```
 
 <table>
-
 <thead>
-
 <tr>
-
 <th style="text-align:left;">
-
 name
-
 </th>
-
 <th style="text-align:left;">
-
 phenomena
-
 </th>
-
 <th style="text-align:left;">
-
 unit
-
 </th>
-
 <th style="text-align:left;">
-
 sensorIds
-
 </th>
-
 <th style="text-align:left;">
-
 sensorType
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:left;">
-
 Leipziger65-Süd
-
 </td>
-
 <td style="text-align:left;">
-
 PM10
-
 </td>
-
 <td style="text-align:left;">
-
 µg/m³
-
 </td>
-
 <td style="text-align:left;">
-
 592ca4b851d3460011ea2636
-
 </td>
-
 <td style="text-align:left;">
-
 SDS 011
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 Leipziger65-Süd
-
 </td>
-
 <td style="text-align:left;">
-
 PM2.5
-
 </td>
-
 <td style="text-align:left;">
-
 µg/m³
-
 </td>
-
 <td style="text-align:left;">
-
 592ca4b851d3460011ea2637
-
 </td>
-
 <td style="text-align:left;">
-
 SDS 011
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 Leipziger65-Süd
-
 </td>
-
 <td style="text-align:left;">
-
 Temperatur
-
 </td>
-
 <td style="text-align:left;">
-
 °C
-
 </td>
-
 <td style="text-align:left;">
-
 592ca4b851d3460011ea2638
-
 </td>
-
 <td style="text-align:left;">
-
 DHT22
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left;">
-
 Leipziger65-Süd
-
 </td>
-
 <td style="text-align:left;">
-
 rel. Luftfeuchte
-
 </td>
-
 <td style="text-align:left;">
-
 %
-
 </td>
-
 <td style="text-align:left;">
-
 592ca4b851d3460011ea2639
-
 </td>
-
 <td style="text-align:left;">
-
 DHT22
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 #### Download senseBox data
@@ -1019,6 +573,7 @@ downloading all available sensors.
 
 ``` r
 data_all <- get_senseBox_data(senseBoxId)
+## [1] "1: 592ca4b851d3460011ea2635"
 ```
 
 When you are interested in just a selection of sensors, just submit the
@@ -1029,6 +584,7 @@ sensor_ids <- get_senseBox_sensor_Ids(senseBoxId)
 
 data_sel <- get_senseBox_data(senseBoxId, 
                               sensorId = sensor_ids$sensorIds[1:2])
+## [1] "1: 592ca4b851d3460011ea2635"
 ```
 
 When using the above code, by default, the data from the last 48 h will
@@ -1043,6 +599,7 @@ argument `sensorId` is not set.
 data_timeframe <- get_senseBox_data(senseBoxId, 
                                     fromDate = "2017-11-11 11:11:11", 
                                     toDate = "2017-11-12 11:11:11")
+## [1] "1: 592ca4b851d3460011ea2635"
 ```
 
 Visualising the results from all sensors is one of the main aims and we
@@ -1102,7 +659,7 @@ infos %>%
   ggplot() +
   geom_histogram(aes(x = phenomena, y = n), stat = "identity") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-## Warning: `cols` is now required.
+## Warning: `cols` is now required when using unnest().
 ## Please use `cols = c(phenomena)`
 ## Warning: Ignoring unknown parameters: binwidth, bins, pad
 ```
@@ -1120,6 +677,7 @@ infos %>%
   ggplot() +
   geom_bar(aes(x = grouptag, y = n, fill = exposure), stat = "identity") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+## `summarise()` has grouped output by 'exposure'. You can override using the `.groups` argument.
 ```
 
 <img src="README_figs/README-unnamed-chunk-15-1.png" width="672" />
@@ -1139,6 +697,7 @@ infos %>%
   
   ggplot() +
   geom_bar(aes(x = year, y = n, fill = exposure), stat = "identity")
+## `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
 ```
 
 <img src="README_figs/README-unnamed-chunk-17-1.png" width="672" />
