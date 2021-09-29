@@ -12,10 +12,12 @@ knitr::opts_chunk$set(collapse = TRUE,
                       fig.path = "README_figs/README-")
 ```
 
-[![Build Status](https://travis-ci.org/JohannesFriedrich/senseBox.svg?branch=master)](https://travis-ci.org/JohannesFriedrich/senseBox)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/JohannesFriedrich/senseBox/workflows/R-CMD-check/badge.svg)](https://github.com/JohannesFriedrich/senseBox/actions)
 [![Build status](https://ci.appveyor.com/api/projects/status/oljck059k9io6qe7/branch/master?svg=true)](https://ci.appveyor.com/project/JohannesFriedrich/sensebox/branch/master)
 [![Coverage Status](https://codecov.io/gh/JohannesFriedrich/senseBox/branch/master/graph/badge.svg)](https://codecov.io/gh/JohannesFriedrich/senseBox)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+<!-- badges: end -->
 
 ### Motivation
 

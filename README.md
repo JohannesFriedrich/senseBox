@@ -1,8 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
 
-[![Build
-Status](https://travis-ci.org/JohannesFriedrich/senseBox.svg?branch=master)](https://travis-ci.org/JohannesFriedrich/senseBox)
+[![R-CMD-check](https://github.com/JohannesFriedrich/senseBox/workflows/R-CMD-check/badge.svg)](https://github.com/JohannesFriedrich/senseBox/actions)
 [![Build
 status](https://ci.appveyor.com/api/projects/status/oljck059k9io6qe7/branch/master?svg=true)](https://ci.appveyor.com/project/JohannesFriedrich/sensebox/branch/master)
 [![Coverage
@@ -10,6 +10,7 @@ Status](https://codecov.io/gh/JohannesFriedrich/senseBox/branch/master/graph/bad
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+<!-- badges: end -->
 
 ### Motivation
 
@@ -78,7 +79,7 @@ Number of senseBoxes
 Number of Measurements
 </td>
 <td style="text-align:right;">
-9775125887
+9775509322
 </td>
 </tr>
 <tr>
@@ -86,7 +87,7 @@ Number of Measurements
 Number of measurements in last minute
 </td>
 <td style="text-align:right;">
-7309
+5873
 </td>
 </tr>
 </tbody>
@@ -414,8 +415,8 @@ leaflet(location) %>%
   addMarkers(~long, ~lat, popup = ~htmltools::htmlEscape(name))
 ```
 
-<div id="htmlwidget-08c76fdd9326de3f383b" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-08c76fdd9326de3f383b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5747946059d9ff3c4622" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5747946059d9ff3c4622">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[52.510952,13.392953,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Leipziger65-Süd",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.510952,52.510952],"lng":[13.392953,13.392953]}},"evals":[],"jsHooks":[]}</script>
 
 #### Sensor Id information
 
@@ -573,7 +574,6 @@ downloading all available sensors.
 
 ``` r
 data_all <- get_senseBox_data(senseBoxId)
-## [1] "1: 592ca4b851d3460011ea2635"
 ```
 
 When you are interested in just a selection of sensors, just submit the
@@ -584,7 +584,6 @@ sensor_ids <- get_senseBox_sensor_Ids(senseBoxId)
 
 data_sel <- get_senseBox_data(senseBoxId, 
                               sensorId = sensor_ids$sensorIds[1:2])
-## [1] "1: 592ca4b851d3460011ea2635"
 ```
 
 When using the above code, by default, the data from the last 48 h will
@@ -599,7 +598,6 @@ argument `sensorId` is not set.
 data_timeframe <- get_senseBox_data(senseBoxId, 
                                     fromDate = "2017-11-11 11:11:11", 
                                     toDate = "2017-11-12 11:11:11")
-## [1] "1: 592ca4b851d3460011ea2635"
 ```
 
 Visualising the results from all sensors is one of the main aims and we
