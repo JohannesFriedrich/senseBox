@@ -39,9 +39,9 @@ get_senseBox_archive <- function(
   if (class(unlist(senseBoxId)) != "character")
     stop("[get_senseBox_archive()]  Argument 'senseBoxId' has to be a character.", call. = FALSE)
 
-  if(is.null(date))
+  if(is.null(date)){
     warning("[get_senseBox_archive()]  Argument 'date' not set. By default the day before yesterday was chosen.", call. = FALSE)
-    date <- Sys.Date() - 2
+    date <- Sys.Date() - 2}
 
   ##==== END ERROR HANDLING
 
@@ -71,6 +71,7 @@ get_senseBox_archive <- function(
   complete_name <- paste(senseBoxId, senseBox_name, sep = "-")
 
   complete_path <- paste(zip_url, complete_name, sep = "")
+  print(complete_path)
 
   ## try if URL works
   ## https://stackoverflow.com/questions/12193779/how-to-write-trycatch-in-r
